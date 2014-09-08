@@ -1,5 +1,10 @@
 package common;
 
+/**
+ * Interface to be implemented by the heated plate classes.  Methods provide support for "animation" in the gui and getting the final results.
+ * @author jeffro
+ *
+ */
 public interface HeatedPlate {
 	
 	/**
