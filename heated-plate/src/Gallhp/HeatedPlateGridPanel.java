@@ -25,7 +25,7 @@ public class HeatedPlateGridPanel extends JPanel {
     private double[][] results;
 	
     /**
-     * 
+     * Default constrcutor.
      */
     public HeatedPlateGridPanel() {
         super();
@@ -40,9 +40,21 @@ public class HeatedPlateGridPanel extends JPanel {
 		this.results = results;
 		repaint();
 	}
+    
+    /**
+     * Resets the heated plate grid to nothing.
+     */
+    public void reset(){
+    	this.results = new double[2][2];
+    	for(int i=0;i<results.length;i++){
+    		for(int j=0;j<results.length;j++)
+    			this.results[i][j]=0;
+    	}
+    	repaint();
+    }
 
 	/**
-     * 
+     * Sets the heated plate dimension to draw the grid.
      * @param dimension
      */
     public void setHeatedPlateDimension(int dimension){
@@ -50,7 +62,7 @@ public class HeatedPlateGridPanel extends JPanel {
     }
     
     /**
-     * 
+     * Return the preferred size of the panel.
      */
     @Override
 	public Dimension getPreferredSize() {
@@ -58,7 +70,7 @@ public class HeatedPlateGridPanel extends JPanel {
 	}
 
     /**
-     * 
+     * Paints a single cell in the heated plate grid.
      * @param aGraphics
      * @param row
      * @param col
@@ -94,23 +106,22 @@ public class HeatedPlateGridPanel extends JPanel {
         aGraphics.drawString(valueStr, colPos+x, rowPos+y);
     }
     
-    /**
-     * 
-     */
     protected void paintComponent(Graphics aGraphics) {
         super.paintComponent(aGraphics);
         
-        BufferedImage bi = new BufferedImage(getWidth(), getHeight(),
-                BufferedImage.TYPE_INT_ARGB);
-        Graphics anotherGraphics = bi.createGraphics();
-
-        for (int i = 0; i < dimension; i++)
-            for (int j = 0; j < dimension; j++){
-                double value = Math.random()*100;
-                paintSquare(anotherGraphics, i, j, value);
-            }
-        
-        aGraphics.drawImage(bi, 0, 0, this);
+        if(results!=null){
+	        BufferedImage bi = new BufferedImage(getWidth(), getHeight(),
+	                BufferedImage.TYPE_INT_ARGB);
+	        Graphics anotherGraphics = bi.createGraphics();
+	
+	        for (int i = 0; i < dimension; i++)
+	            for (int j = 0; j < dimension; j++){
+	                double value = results[i][j];
+	                paintSquare(anotherGraphics, i, j, value);
+	            }
+	        
+	        aGraphics.drawImage(bi, 0, 0, this);
+        }
    }
 
 }

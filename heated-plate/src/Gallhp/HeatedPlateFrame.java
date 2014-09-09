@@ -2,6 +2,8 @@ package Gallhp;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -9,15 +11,17 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 
 @SuppressWarnings("serial")
-public class HeatedPlateFrame extends JFrame implements HeatedPlateController.HeatedPlateControllerListener {
+public class HeatedPlateFrame extends JFrame implements HeatedPlateController.HeatedPlateControllerListener,ActionListener {
 	
-	private HeatedPlateController demoController = new HeatedPlateController();
+	//all the gui widget components
+	private HeatedPlateController heatedPlateController = new HeatedPlateController();
 	private HeatedPlateGridPanel heatedPlateGridPanel = new HeatedPlateGridPanel();
 	private JComboBox<String> heatedPlateAlgoComboBox = new JComboBox<String>(new String[]{"Tpdahp","Tpfahp","Twfahp","Tpdohp"});
 	private JSpinner plateDimensionSpinner = new JSpinner(new SpinnerNumberModel(10,0,100,1));
@@ -29,6 +33,9 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 	private JButton getResultsButton = new JButton("Get Results");
 	private JButton cancelButton = new JButton("Cancel");
 
+	/**
+	 * Default constructor for the main window.
+	 */
 	public HeatedPlateFrame() {
 		super("Gallhp Demo");
 		getContentPane().setLayout(new BorderLayout());
@@ -79,29 +86,70 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(getResultsButton);
 		buttonPanel.add(cancelButton);
+		getResultsButton.addActionListener(this);
+		cancelButton.setEnabled(false);
+		cancelButton.addActionListener(this);
 		controlPanel.add(buttonPanel);
 		
 		getContentPane().add(controlPanel,BorderLayout.WEST);
 		
-		demoController.addListener(this);
+		heatedPlateController.addListener(this);
+	}
+	
+	private void setControlPanel(boolean enabled){
+		getResultsButton.setEnabled(enabled);
+		cancelButton.setEnabled(!enabled);
+		
+		heatedPlateAlgoComboBox.setEnabled(enabled);
+		plateDimensionSpinner.setEnabled(enabled);
+		leftEdgeTemperatureSpinner.setEnabled(enabled);
+		rightEdgeTemperatureSpinner.setEnabled(enabled);
+		topEdgeTemperatureSpinner.setEnabled(enabled);
+		bottomEdgeTemperatureSpinner.setEnabled(enabled);
+		animateCheckBox.setEnabled(enabled);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==getResultsButton){
+			int algorithm = heatedPlateAlgoComboBox.getSelectedIndex();
+			boolean animation = animateCheckBox.isSelected();
+			Integer dimension = (Integer) plateDimensionSpinner.getValue();
+			Double left = (Double)leftEdgeTemperatureSpinner.getValue();
+			Double right = (Double)leftEdgeTemperatureSpinner.getValue();
+			Double top = (Double)leftEdgeTemperatureSpinner.getValue();
+			Double bottom = (Double)bottomEdgeTemperatureSpinner.getValue();
+			heatedPlateGridPanel.setHeatedPlateDimension(dimension);
+			heatedPlateController.start(dimension, left, right, top, bottom, algorithm, animation);
+		}
+		else if(e.getSource()==cancelButton){
+			heatedPlateController.cancel();
+			JOptionPane.showMessageDialog(this,"Cancelled!" , "WARNING", JOptionPane.WARNING_MESSAGE, null);
+		}
 	}
 
+	/**
+	 * Interface methods for HeatedPlateControllerListener allow callbacks to update the UI.
+	 */
 	@Override
 	public void started() {
 		//enable disable buttons, fields
+		setControlPanel(false);
+		
 		//initialize heated plate
+		heatedPlateGridPanel.reset();
 		
 	}
 
 	@Override
 	public void haveResults(double[][] results) {
-		// TODO Auto-generated method stub
-		
+		heatedPlateGridPanel.setResults(results);
 	}
 
 	@Override
 	public void finished() {
 		//enable disable buttons, fields
+		setControlPanel(true);
 		
 	}
 }
