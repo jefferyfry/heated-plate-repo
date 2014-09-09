@@ -1,14 +1,15 @@
 package Tpdohp;
 
+import javax.swing.JFrame;
+
 public class Demo {
 
-	public Demo() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		HeatedPlateFrame heatedPlateFrame = new HeatedPlateFrame();
 
+		heatedPlateFrame.pack();   
+		heatedPlateFrame.setVisible(true);        
+		heatedPlateFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
