@@ -1,6 +1,6 @@
 package Gallhp;
 
-import common.HeatedPlate;
+import Gallhp.algo.HeatedPlate;
 
 /**
  * Dummy class for generating random results for testing while waiting for Tpdahp, Tpfahp, Twfahp, Tpdohp to be completed.
@@ -47,5 +47,10 @@ public class DummyHeatedPlateResults implements HeatedPlate {
     			results[i][j]=Math.random()*100;
     	}
 		return results;
+	}
+	
+	@Override
+	public int getIterations() {
+		return iteration;
 	}
 }

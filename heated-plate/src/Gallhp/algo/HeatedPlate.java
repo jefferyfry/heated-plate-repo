@@ -1,4 +1,4 @@
-package common;
+package Gallhp.algo;
 
 /**
  * Interface to be implemented by the heated plate classes.  Methods provide support for "animation" in the gui and getting the final results.
@@ -34,5 +34,11 @@ public interface HeatedPlate {
 	 * @return
 	 */
 	public double[][] getFinalResults();
+	
+	/**
+	 * Returns the total number of iterations or the last completed iteration.
+	 * @return
+	 */
+	public int getIterations();
 
 }
