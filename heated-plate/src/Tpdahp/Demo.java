@@ -4,12 +4,12 @@ public class Demo
 {
 	public static void main(String...args) 
 	{
-		int dimension = Integer.parseInt(args[0]);
-		int left = Integer.parseInt(args[1]), 
-			right = Integer.parseInt(args[2]), 
-			top = Integer.parseInt(args[3]), 
-			bottom = Integer.parseInt(args[4]); 
+		int dim = Integer.parseInt(args[1]);
+		int left = Integer.parseInt(args[3]), 
+			right = Integer.parseInt(args[5]), 
+			top = Integer.parseInt(args[7]), 
+			bottom = Integer.parseInt(args[9]); 
 		
-		Diffusion diff = new Diffusion(dimension, left, right, top, bottom);
+		Diffusion diff = new Diffusion(dim, left, right, top, bottom);
 	}
 }

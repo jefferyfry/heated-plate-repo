@@ -1,4 +1,4 @@
-package Tpdahp;
+package Tpdohp;
 
 class Diffusion 
 {

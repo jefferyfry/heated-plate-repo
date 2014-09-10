@@ -1,9 +1,9 @@
-package Tpdahp;
+package Twfahp;
 
 class Diffusion 
 {
-	private double oldPlate[][];
-	private double newPlate[][];
+	private Float oldPlate[][];
+	private Float newPlate[][];
 	
 	private int dim;
 	private int left, right, top, bottom;
@@ -17,8 +17,8 @@ class Diffusion
 		this.top = top;
 		this.bottom = bottom;
 		
-		oldPlate = new double[dim + 2][dim + 2];
-		newPlate = new double[dim + 2][dim + 2];
+		oldPlate = new Float[dim + 2][dim + 2];
+		newPlate = new Float[dim + 2][dim + 2];
 		
 		initialize(oldPlate);
 	    initialize(newPlate);
@@ -26,16 +26,20 @@ class Diffusion
 	    printTable();
 	}
 	
-	public void initialize(double[][] plate)
+	public void initialize(Float[][] plate)
 	{
 		for(int i=1; i <= dim; i++)
 		{
-			plate[i][0] = left;
-			plate[i][dim+1] = right;
+			plate[i][0] = new Float(left);
+			plate[i][dim+1] = new Float(right);
 			
-			plate[0][i] = top;
-			plate[dim+1][i] = bottom;
+			plate[0][i] = new Float(top);
+			plate[dim+1][i] = new Float(bottom);
 		}
+		
+		for(int i=1; i <= dim; i++)
+			for(int j=1; j <= dim; j++)
+				plate[i][j] = new Float(0);
 	}
 	
 	public void diffuse()
@@ -45,11 +49,11 @@ class Diffusion
 		do{
 			for (int i = 1; i <= dim; i++) 
 		        for (int j = 1; j <= dim; j++) 
-		          newPlate[i][j] = (oldPlate[i + 1][j] + oldPlate[i - 1][j] +
-		                            oldPlate[i][j + 1] + oldPlate[i][j - 1]) / 4.0;
-		      
+		        	newPlate[i][j] = (oldPlate[i + 1][j] + oldPlate[i - 1][j] +
+		                              oldPlate[i][j + 1] + oldPlate[i][j - 1]) / 4.0F;
+		     
 			swap();
-		      
+	      
 		}while(! done() && count++ < 10000);
 	}
 	
@@ -65,7 +69,7 @@ class Diffusion
 	
 	private void swap()
 	{
-		double[][] temp;
+		Float[][] temp;
 		
 		temp = oldPlate;
 		oldPlate = newPlate;
