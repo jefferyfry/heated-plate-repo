@@ -2,6 +2,7 @@ package Gallhp;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -16,10 +17,7 @@ public class HeatedPlateGridPanel extends JPanel {
     private final static int MARGIN = 50;
     
     //formatting of the text
-    private DecimalFormat df = new DecimalFormat("###.00");
-
-    //heated plate dimension
-    private int dimension=10;
+    private DecimalFormat df = new DecimalFormat("###.##");
     
     //heated plate results
     private double[][] results;
@@ -29,6 +27,7 @@ public class HeatedPlateGridPanel extends JPanel {
      */
     public HeatedPlateGridPanel() {
         super();
+        reset();
     }
     
     
@@ -52,14 +51,6 @@ public class HeatedPlateGridPanel extends JPanel {
     	}
     	repaint();
     }
-
-	/**
-     * Sets the heated plate dimension to draw the grid.
-     * @param dimension
-     */
-    public void setHeatedPlateDimension(int dimension){
-    	this.dimension=dimension;
-    }
     
     /**
      * Return the preferred size of the panel.
@@ -71,17 +62,17 @@ public class HeatedPlateGridPanel extends JPanel {
 
     /**
      * Paints a single cell in the heated plate grid.
-     * @param aGraphics
+     * @param graphics
      * @param row
      * @param col
      * @param value
      */
-    private void paintSquare(Graphics aGraphics, int row, int col, double value) {
+    private void paintSquare(Graphics graphics, int row, int col, double value) {
     	int length=getHeight()-MARGIN;
     	if(getWidth()<getHeight())
     		length = getWidth()-MARGIN;
     
-    	int cellSize = length/dimension;
+    	int cellSize = length/results.length;
     	
     	int ulhcY = (getHeight()-length)/2;
     	int ulhcX = (getWidth()-length)/2;
@@ -90,37 +81,40 @@ public class HeatedPlateGridPanel extends JPanel {
         int colPos = ulhcX + col * cellSize;
 
         // Overwrite everything that was there previously
-        aGraphics.setColor(Color.black);
-        aGraphics.fillRect(colPos, rowPos, cellSize, cellSize);
+        graphics.setColor(Color.black);
+        graphics.fillRect(colPos, rowPos, cellSize, cellSize);
         
         // Color in RGB format with green and blue values = 0.0
-        aGraphics.setColor(new Color((float) value/100.0f, 0.f, 0.f));    
-        aGraphics.fillRect(colPos, rowPos, cellSize, cellSize);
+        graphics.setColor(new Color((float) value/100.0f, 0.f, 0.f));    
+        graphics.fillRect(colPos, rowPos, cellSize, cellSize);
         
         //write the temperature
-        aGraphics.setColor(Color.white);
-        FontMetrics fm = aGraphics.getFontMetrics();
+        if(value!=0){
+        graphics.setFont(new Font("Arial", Font.PLAIN,9)); 
+        graphics.setColor(Color.white);
+        FontMetrics fm = graphics.getFontMetrics();
         String valueStr = df.format(value);
         int x = (cellSize - fm.stringWidth(valueStr)) / 2;
         int y = (fm.getAscent() + (cellSize - (fm.getAscent() + fm.getDescent())) / 2);
-        aGraphics.drawString(valueStr, colPos+x, rowPos+y);
+        graphics.drawString(valueStr, colPos+x, rowPos+y);
+        }
     }
     
-    protected void paintComponent(Graphics aGraphics) {
-        super.paintComponent(aGraphics);
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
         
         if(results!=null){
 	        BufferedImage bi = new BufferedImage(getWidth(), getHeight(),
 	                BufferedImage.TYPE_INT_ARGB);
 	        Graphics anotherGraphics = bi.createGraphics();
 	
-	        for (int i = 0; i < dimension; i++)
-	            for (int j = 0; j < dimension; j++){
+	        for (int i = 0; i < results.length; i++)
+	            for (int j = 0; j < results.length; j++){
 	                double value = results[i][j];
 	                paintSquare(anotherGraphics, i, j, value);
 	            }
 	        
-	        aGraphics.drawImage(bi, 0, 0, this);
+	        graphics.drawImage(bi, 0, 0, this);
         }
    }
 
