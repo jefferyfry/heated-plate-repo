@@ -54,7 +54,7 @@ public class HeatedPlateController {
 	 * @param bottom
 	 * @param algorithm
 	 */
-	public void start(int dimension,double left,double right,double top,double bottom,int algorithm,boolean animation){
+	public void start(int dimension,int left,int right,int top,int bottom,int algorithm,boolean animation){
 		switch(algorithm){
 			case 0:
 				thisHeatedPlate = this.tpdahp4ui;
