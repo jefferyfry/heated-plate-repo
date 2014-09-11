@@ -81,7 +81,7 @@ public class Twfahp4ui implements HeatedPlate {
 	 */
 	@Override
 	public boolean hasNext() {
-		return !done();
+		return (!done() && iteration < 10000);
 	}
 
 	/* (non-Javadoc)
@@ -116,9 +116,6 @@ public class Twfahp4ui implements HeatedPlate {
 			for(int j=1; j <= this.dimension; j++)
 				if(newPlate[i][j] - oldPlate[i][j] != 0)
 					return false;
-					
-		if(iteration<10000)
-			return false;
 		
 		return true;
 	}

@@ -28,10 +28,10 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 	private HeatedPlateGridPanel heatedPlateGridPanel = new HeatedPlateGridPanel();
 	private JComboBox heatedPlateAlgoComboBox = new JComboBox(new String[]{"Tpdahp","Tpfahp","Twfahp","Tpdohp"});
 	private JSpinner plateDimensionSpinner = new JSpinner(new SpinnerNumberModel(10,0,100,1));
-	private JSpinner leftEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50.0,0.0,100.0,0.1));
-	private JSpinner rightEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50.0,0.0,100.0,0.1));
-	private JSpinner topEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50.0,0.0,100.0,0.1));
-	private JSpinner bottomEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50.0,0.0,100.0,0.1));
+	private JSpinner leftEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50,0,100,1));
+	private JSpinner rightEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50,0,100,1));
+	private JSpinner topEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50,0,100,1));
+	private JSpinner bottomEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50,0,100,1));
 	private JCheckBox animateCheckBox = new JCheckBox("Animate");
 	private JButton getResultsButton = new JButton("Get Results");
 	private JButton cancelButton = new JButton("Cancel");
@@ -166,11 +166,11 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		if(e.getSource()==getResultsButton){
 			int algorithm = heatedPlateAlgoComboBox.getSelectedIndex();
 			boolean animation = animateCheckBox.isSelected();
-			Integer dimension = (Integer) plateDimensionSpinner.getValue();
-			Double left = (Double)leftEdgeTemperatureSpinner.getValue();
-			Double right = (Double)rightEdgeTemperatureSpinner.getValue();
-			Double top = (Double)topEdgeTemperatureSpinner.getValue();
-			Double bottom = (Double)bottomEdgeTemperatureSpinner.getValue();
+			int dimension = (Integer) plateDimensionSpinner.getValue();
+			int left = (Integer)leftEdgeTemperatureSpinner.getValue();
+			int right = (Integer)rightEdgeTemperatureSpinner.getValue();
+			int top = (Integer)topEdgeTemperatureSpinner.getValue();
+			int bottom = (Integer)bottomEdgeTemperatureSpinner.getValue();
 			heatedPlateController.start(dimension, left, right, top, bottom, algorithm, animation);
 		}
 		else if(e.getSource()==cancelButton){

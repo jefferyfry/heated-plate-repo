@@ -55,7 +55,6 @@ public class HeatedPlateController {
 	 * @param algorithm
 	 */
 	public void start(int dimension,double left,double right,double top,double bottom,int algorithm,boolean animation){
-		System.out.println("Started heat plate with dimension="+dimension+", left="+left+", right="+right+", top="+top+", bottom="+bottom+", algorithm="+algorithm+", animation="+animation);
 		switch(algorithm){
 			case 0:
 				thisHeatedPlate = this.tpdahp4ui;
@@ -163,7 +162,7 @@ public class HeatedPlateController {
 				fireIterationCompleted(thisHeatedPlate.getIterations());
 			}
 			else { //animated
-				while(tpdahp4ui.hasNext()&&go){
+				do{
 					long startTime = System.currentTimeMillis();
 					double[][] results = thisHeatedPlate.nextResults();
 					long endTime = System.currentTimeMillis();
@@ -176,7 +175,7 @@ public class HeatedPlateController {
 						Thread.sleep(500);
 					}
 					catch(Exception e){}
-				}
+				}while(tpdahp4ui.hasNext()&&go);
 			}
 			
 			fireFinished();
