@@ -67,13 +67,7 @@ public class HeatedPlateGridPanel extends JPanel {
      * @param col
      * @param value
      */
-    private void paintSquare(Graphics graphics, int row, int col, double value) {
-    	int length=getHeight()-MARGIN;
-    	if(getWidth()<getHeight())
-    		length = getWidth()-MARGIN;
-    
-    	int cellSize = length/results.length;
-    	
+    private void paintSquare(Graphics graphics, int row, int col, double value,int length, int cellSize) {
     	int ulhcY = (getHeight()-length)/2;
     	int ulhcX = (getWidth()-length)/2;
     	
@@ -90,18 +84,26 @@ public class HeatedPlateGridPanel extends JPanel {
         
         //write the temperature
         if(value!=0){
-        graphics.setFont(new Font("Arial", Font.PLAIN,9)); 
-        graphics.setColor(Color.white);
-        FontMetrics fm = graphics.getFontMetrics();
-        String valueStr = df.format(value);
-        int x = (cellSize - fm.stringWidth(valueStr)) / 2;
-        int y = (fm.getAscent() + (cellSize - (fm.getAscent() + fm.getDescent())) / 2);
-        graphics.drawString(valueStr, colPos+x, rowPos+y);
+	        graphics.setFont(new Font("Arial", Font.PLAIN,9)); 
+	        graphics.setColor(Color.white);
+	        FontMetrics fm = graphics.getFontMetrics();
+	        String valueStr = df.format(value);
+	        int x = (cellSize - fm.stringWidth(valueStr)) / 2;
+	        int y = (fm.getAscent() + (cellSize - (fm.getAscent() + fm.getDescent())) / 2);
+	        graphics.drawString(valueStr, colPos+x, rowPos+y);
         }
     }
     
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
+        
+        //calculate length of the heated plate
+        int length=getHeight()-MARGIN;
+    	if(getWidth()<getHeight())
+    		length = getWidth()-MARGIN;
+    
+    	//determine the size of a cell/grid square
+    	int cellSize = length/results.length;
         
         if(results!=null){
 	        BufferedImage bi = new BufferedImage(getWidth(), getHeight(),
@@ -111,8 +113,13 @@ public class HeatedPlateGridPanel extends JPanel {
 	        for (int i = 0; i < results.length; i++)
 	            for (int j = 0; j < results.length; j++){
 	                double value = results[i][j];
-	                paintSquare(anotherGraphics, i, j, value);
+	                paintSquare(anotherGraphics, i, j, value,length,cellSize);
 	            }
+	        
+	        //paint edge boundary
+	        anotherGraphics.setColor(Color.yellow);
+	        int boundaryLength = (results.length-2)*cellSize;
+	        anotherGraphics.drawRect(MARGIN/2+cellSize, MARGIN/2+cellSize, boundaryLength, boundaryLength);
 	        
 	        graphics.drawImage(bi, 0, 0, this);
         }
