@@ -20,6 +20,13 @@ class Diffusion
 		oldPlate = new Float[dim + 2][dim + 2];
 		newPlate = new Float[dim + 2][dim + 2];
 		
+		for(int i=0; i < dim+2; i++)
+			for(int j=0; j < dim+2; j++)
+			{
+				oldPlate[i][j] = new Float(0.0);
+				newPlate[i][j] = new Float(0.0);
+			}
+		
 		initialize(oldPlate);
 	    initialize(newPlate);
 	    diffuse();
