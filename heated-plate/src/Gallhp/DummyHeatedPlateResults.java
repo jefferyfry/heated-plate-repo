@@ -13,8 +13,8 @@ public class DummyHeatedPlateResults implements HeatedPlate {
 	private int iteration=0;
 
 	@Override
-	public void initialize(int dimension, double left, double right,
-			double top, double bottom) {
+	public void initialize(int dimension, int left, int right,
+			int top, int bottom) {
 		this.dimension=dimension;
 		this.iteration=0;
 	}

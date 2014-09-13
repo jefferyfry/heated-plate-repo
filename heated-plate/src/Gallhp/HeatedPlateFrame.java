@@ -44,7 +44,7 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 	 * Default constructor for the main window.
 	 */
 	public HeatedPlateFrame() {
-		super("Gallhp Demo");
+		super("Gallhp");
 		getContentPane().setLayout(new BorderLayout());
 		
 		//the heated plate is in the "center"
@@ -100,10 +100,10 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		
 		getContentPane().add(controlPanel,BorderLayout.WEST);
 		
-		//create the analysis panel on the right
-		JPanel analysisPanel = new JPanel(new GridBagLayout());
+		//create the performance panel on the right
+		JPanel performancePanel = new JPanel(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
-		analysisPanel.setBorder(new TitledBorder("Analysis"));
+		performancePanel.setBorder(new TitledBorder("Performance"));
 		
 		JPanel elapsedTimePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		elapsedTimePanel.add(new JLabel("Elasped Time (ms):"));
@@ -113,7 +113,7 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		gbc.anchor = GridBagConstraints.NORTHWEST;
 		gbc.weightx = 1;
 		gbc.weighty = 0.1;
-		analysisPanel.add(elapsedTimePanel,gbc);
+		performancePanel.add(elapsedTimePanel,gbc);
 		
 		JPanel memoryUsagePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		memoryUsagePanel.add(new JLabel("Memory Usage (bytes):"));
@@ -123,7 +123,7 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		gbc.anchor = GridBagConstraints.NORTHWEST;
 		gbc.weightx = 1;
 		gbc.weighty = 0.1;
-		analysisPanel.add(memoryUsagePanel,gbc);
+		performancePanel.add(memoryUsagePanel,gbc);
 		
 		JPanel iterationPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		iterationPanel.add(new JLabel("Iterations:"));
@@ -133,7 +133,7 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		gbc.anchor = GridBagConstraints.NORTHWEST;
 		gbc.weightx = 1;
 		gbc.weighty = 0.1;
-		analysisPanel.add(iterationPanel,gbc);
+		performancePanel.add(iterationPanel,gbc);
 		
 		gbc.gridy = 4;
 		gbc.gridx = 1;
@@ -141,9 +141,9 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		gbc.weightx = 1;
 		gbc.weighty = 1;
 		gbc.fill = GridBagConstraints.BOTH;
-		analysisPanel.add(new JPanel(),gbc);
-		analysisPanel.setPreferredSize(new Dimension(250,analysisPanel.getHeight())); 
-		getContentPane().add(analysisPanel,BorderLayout.EAST);
+		performancePanel.add(new JPanel(),gbc);
+		performancePanel.setPreferredSize(new Dimension(250,performancePanel.getHeight())); 
+		getContentPane().add(performancePanel,BorderLayout.EAST);
 		
 		heatedPlateController.addListener(this);
 	}

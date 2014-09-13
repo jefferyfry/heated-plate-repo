@@ -15,7 +15,7 @@ public interface HeatedPlate {
 	 * @param top edge temperature for top
 	 * @param bottom edge temperature for bottom
 	 */
-	public void initialize(int dimension,double left, double right,double top,double bottom);
+	public void initialize(int dimension,int left, int right,int top,int bottom);
 	
 	/**
 	 * Returns the results for the next iteration of the algorithm.  Intended to be used for animation.
@@ -40,5 +40,4 @@ public interface HeatedPlate {
 	 * @return
 	 */
 	public int getIterations();
-
 }
