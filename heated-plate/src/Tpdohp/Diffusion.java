@@ -143,16 +143,17 @@ class Diffusion
 	{
 		LatticePoint printRow = newPlateRoot;
 		
-		for(int i=0; i < dim; i++)
+		for(int i=0; i < dim+2; i++)
 		{
-			printRow = printRow.down;
 			LatticePoint printTrav = printRow;
 			
-			for(int j=0; j < dim; j++)
+			for(int j=0; j < dim+2; j++)
 			{
-				printTrav = printTrav.right;
 				System.out.format("%6.2f ", printTrav.temperature);
+				printTrav = printTrav.right;
+				
 			}
+			printRow = printRow.down;
 			
 			System.out.println();
 		}	

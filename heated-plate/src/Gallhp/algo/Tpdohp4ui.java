@@ -25,6 +25,7 @@ public class Tpdohp4ui implements HeatedPlate {
 		this.rightTemp = right;
 		this.topTemp = top;
 		this.bottomTemp = bottom;
+		this.iteration=0;
 		
 		oldPlateRoot = initializePlate(oldPlateRoot);
 		newPlateRoot = initializePlate(newPlateRoot);
@@ -32,7 +33,7 @@ public class Tpdohp4ui implements HeatedPlate {
 	
 	public LatticePoint initializePlate(LatticePoint plateRoot)
 	{
-		plateRoot = new LatticePoint(-1);
+		plateRoot = new LatticePoint(0);
 		
 		LatticePoint rowIndex = plateRoot;
 		LatticePoint trav1 = rowIndex;
@@ -77,8 +78,29 @@ public class Tpdohp4ui implements HeatedPlate {
 	 */
 	@Override
 	public double[][] nextResults() {
-		// TODO Auto-generated method stub
-		return null;
+		LatticePoint newPlateRowIndex = newPlateRoot;
+		LatticePoint oldPlateRowIndex = oldPlateRoot;
+		
+		for(int i=0; i < dimension; i++)
+		{
+			newPlateRowIndex = newPlateRowIndex.down;
+			oldPlateRowIndex = oldPlateRowIndex.down;
+			LatticePoint travNewPlate = newPlateRowIndex;
+			LatticePoint travOldPlate = oldPlateRowIndex;
+			
+			for(int j=0; j < dimension; j++)
+			{
+				travNewPlate = travNewPlate.right;
+				travOldPlate = travOldPlate.right;
+				
+				travNewPlate.temperature = (travOldPlate.left.temperature + travOldPlate.right.temperature +
+						travOldPlate.up.temperature + travOldPlate.down.temperature) / 4.0;
+			}
+		}	
+	     
+		swap();
+		iteration++;
+		return convert2double(newPlateRoot);
 	}
 
 	/* (non-Javadoc)
@@ -124,18 +146,28 @@ public class Tpdohp4ui implements HeatedPlate {
 
 	private double[][] convert2double(LatticePoint newPlateRoot) {
 		double[][] newArray = new double[dimension+2][dimension+2];
-		LatticePoint thisPoint = newPlateRoot;
-		for(int i=0; i < newArray.length; i++)
+		LatticePoint latticeRow = newPlateRoot;
+		
+		for(int i=0; i < dimension+2; i++)
 		{
-			for(int j=0; j < newArray.length; j++)
+			LatticePoint latticeTrav = latticeRow;
+			
+			for(int j=0; j < dimension+2; j++)
 			{
-				newArray[i][j] = thisPoint.temperature;
-				thisPoint = thisPoint.right;
-				System.out.format("(%d,%d)=%f ", i,j,thisPoint.temperature);
+				if((i==0&&j==0)
+						||(i==newArray.length-1&&j==0)
+						||(i==0&&j==newArray.length-1)
+						||(i==newArray.length-1&&j==newArray.length-1))
+					newArray[i][j] = 0; //the basic algorithm initialized the corners to non-zero values
+										//this doesn't impact the results, but does impact the gui since I show the edges
+										//to work around this, i just set the corners to zero
+				else 
+					newArray[i][j] = latticeTrav.temperature;
+					
+				latticeTrav = latticeTrav.right;
 			}
-			thisPoint = thisPoint.down;
-			System.out.println();
-		}
+			latticeRow = latticeRow.down;
+		}	
 		return newArray;
 	}
 
