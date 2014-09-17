@@ -82,7 +82,7 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		controlPanel.add(topEdgeTemperatureSpinnerPanel);
 		
 		JPanel bottomEdgeTemperatureSpinnerPanel = new JPanel();
-		bottomEdgeTemperatureSpinnerPanel.add(new JLabel("Left Edge Temperature:"));
+		bottomEdgeTemperatureSpinnerPanel.add(new JLabel("Bottom Edge Temperature:"));
 		bottomEdgeTemperatureSpinnerPanel.add(bottomEdgeTemperatureSpinner);
 		controlPanel.add(bottomEdgeTemperatureSpinnerPanel);
 		
