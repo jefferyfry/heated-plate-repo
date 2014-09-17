@@ -27,7 +27,7 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 	private HeatedPlateController heatedPlateController = new HeatedPlateController();
 	private HeatedPlateGridPanel heatedPlateGridPanel = new HeatedPlateGridPanel();
 	private JComboBox heatedPlateAlgoComboBox = new JComboBox(new String[]{"Tpdahp","Tpfahp","Twfahp","Tpdohp"});
-	private JSpinner plateDimensionSpinner = new JSpinner(new SpinnerNumberModel(10,0,100,1));
+	private JSpinner plateDimensionSpinner = new JSpinner(new SpinnerNumberModel(10,0,50,1));
 	private JSpinner leftEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50,0,100,1));
 	private JSpinner rightEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50,0,100,1));
 	private JSpinner topEdgeTemperatureSpinner = new JSpinner(new SpinnerNumberModel(50,0,100,1));

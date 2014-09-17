@@ -16,7 +16,7 @@ public class Demo {
 	public static void main(String[] args) {
 		HeatedPlateFrame heatedPlateFrame = new HeatedPlateFrame();
 
-		heatedPlateFrame.pack();   
+		heatedPlateFrame.setExtendedState(heatedPlateFrame.getExtendedState()|JFrame.MAXIMIZED_BOTH);   
 		heatedPlateFrame.setVisible(true);        
 		heatedPlateFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
