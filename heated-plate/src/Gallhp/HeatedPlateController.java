@@ -35,6 +35,9 @@ public class HeatedPlateController {
 	//status flag for the executor thread
 	private boolean go=true;
 	
+	//running elapsed time
+	private long elapsedTime=0;
+	
 	//listeners
 	private List<HeatedPlateControllerListener> listeners = new ArrayList<HeatedPlateControllerListener>();
 
@@ -74,6 +77,7 @@ public class HeatedPlateController {
 		thisHeatedPlate.initialize(dimension, left, right, top, bottom);
 		this.animation=animation;
 		this.go=true;
+		this.elapsedTime=0;
 		(new Executor()).start();
 	}
 	
@@ -96,7 +100,7 @@ public class HeatedPlateController {
 	
 	private void fireHaveElapsedTime(long time){
 		for(HeatedPlateControllerListener listener:listeners)
-			listener.haveElapsedTime(time);
+			listener.haveElapsedTime(elapsedTime+=time);
 	}
 	
 	private void fireHaveMemoryUsage(long memoryUsage){

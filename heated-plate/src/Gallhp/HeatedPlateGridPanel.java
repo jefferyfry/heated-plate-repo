@@ -119,7 +119,9 @@ public class HeatedPlateGridPanel extends JPanel {
 	        //paint edge boundary
 	        anotherGraphics.setColor(Color.yellow);
 	        int boundaryLength = (results.length-2)*cellSize;
-	        anotherGraphics.drawRect(MARGIN/2+cellSize, MARGIN/2+cellSize, boundaryLength, boundaryLength);
+	        int ulhcY = (getHeight()-length)/2+cellSize;
+	    	int ulhcX = (getWidth()-length)/2+cellSize;
+	        anotherGraphics.drawRect(ulhcX, ulhcY, boundaryLength, boundaryLength);
 	        
 	        graphics.drawImage(bi, 0, 0, this);
         }
