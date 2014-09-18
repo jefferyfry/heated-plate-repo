@@ -179,7 +179,7 @@ public class HeatedPlateController {
 						Thread.sleep(500);
 					}
 					catch(Exception e){}
-				}while(tpdahp4ui.hasNext()&&go);
+				}while(thisHeatedPlate.hasNext()&&go);
 			}
 			
 			fireFinished();
