@@ -21,7 +21,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 
 @SuppressWarnings("serial")
-public class HeatedPlateFrame extends JFrame implements HeatedPlateController.HeatedPlateControllerListener,ActionListener {
+public class HeatedPlateFrame extends JFrame implements HeatedPlateController.HeatedPlateControllerListener, ActionListener {
 	
 	//all the gui widget components
 	private HeatedPlateController heatedPlateController = new HeatedPlateController();

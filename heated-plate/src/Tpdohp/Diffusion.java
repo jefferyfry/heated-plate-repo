@@ -1,6 +1,6 @@
 package Tpdohp;
 
-class Diffusion 
+public class Diffusion 
 {
 	private class LatticePoint
 	{
@@ -17,6 +17,7 @@ class Diffusion
 	
 	private int dim;
 	private int leftTemp, rightTemp, topTemp, bottomTemp;
+	int iteration;
 	
 	public Diffusion(int dim, int left, int right, int top, int bottom)
 	{
@@ -30,8 +31,10 @@ class Diffusion
 		oldPlateRoot = initialize(oldPlateRoot);
 		newPlateRoot = initialize(newPlateRoot);
 	    diffuse();
-	    printTable();
+	    //printTable();
 	}
+	
+	public int getIteration() { return iteration; }
 	
 	public LatticePoint initialize(LatticePoint plateRoot)
 	{
@@ -77,7 +80,7 @@ class Diffusion
 	
 	public void diffuse()
 	{
-		int count = 0;
+		iteration = 0;
 		
 		do{
 			LatticePoint newPlateRowIndex = newPlateRoot;
@@ -102,7 +105,7 @@ class Diffusion
 		     
 			swap();
 	      
-		}while(! done() && count++ < 10000);
+		}while(! done() && iteration++ < 10000);
 	}
 	
 	private boolean done()
