@@ -1,12 +1,13 @@
 package Tpfahp;
 
-class Diffusion 
+public class Diffusion 
 {
 	private float oldPlate[][];
 	private float newPlate[][];
 	
 	private int dim;
 	private int left, right, top, bottom;
+	int iteration;
 	
 	public Diffusion(int dim, int left, int right, int top, int bottom)
 	{
@@ -23,8 +24,10 @@ class Diffusion
 		initialize(oldPlate);
 	    initialize(newPlate);
 	    diffuse();
-	    printTable();
+	    //printTable();
 	}
+	
+	public int getIteration() { return iteration; }
 	
 	public void initialize(float[][] plate)
 	{
@@ -40,7 +43,7 @@ class Diffusion
 	
 	public void diffuse()
 	{
-		int count = 0;
+		iteration = 0;
 		
 		do{
 			for (int i = 1; i <= dim; i++) 
@@ -50,9 +53,7 @@ class Diffusion
 	
 			swap();
 	      
-		}while(! done() && count++ < 10000);
-		
-		System.out.println(count);
+		}while(! done() && iteration++ < 10000);
 	}
 	
 	private boolean done()
