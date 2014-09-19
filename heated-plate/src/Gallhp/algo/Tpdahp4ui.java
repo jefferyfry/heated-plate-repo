@@ -70,7 +70,7 @@ public class Tpdahp4ui implements HeatedPlate {
 	 */
 	@Override
 	public boolean hasNext() {
-		return (!done() && iteration < 10000);
+		return (!done() && iteration < 1000000);
 	}
 
 	/* (non-Javadoc)
@@ -86,7 +86,7 @@ public class Tpdahp4ui implements HeatedPlate {
 		      
 			swap();
 		      
-		}while(!done() && iteration++ < 10000);
+		}while(!done() && ++iteration < 1000000);
 		
 		return newPlate;
 	}

@@ -27,7 +27,7 @@ public class Diffusion
 	    //printTable();
 	}
 	
-	public int getIteration() { return iteration-1; }
+	public int getIteration() { return iteration; }
 	
 	public void initialize(float[][] plate)
 	{
@@ -53,7 +53,7 @@ public class Diffusion
 	
 			swap();
 	      
-		}while(! done() && iteration++ < 10000);
+		}while(! done() && ++iteration < 10000);
 	}
 	
 	private boolean done()

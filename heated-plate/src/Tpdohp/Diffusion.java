@@ -34,7 +34,7 @@ public class Diffusion
 	    //printTable();
 	}
 	
-	public int getIteration() { return iteration-1; }
+	public int getIteration() { return iteration; }
 	
 	public LatticePoint initialize(LatticePoint plateRoot)
 	{
@@ -104,8 +104,12 @@ public class Diffusion
 			}	
 		     
 			swap();
+			
+			//System.out.println(iteration);
+			//printTable();
+			
 	      
-		}while(! done() && iteration++ < 10000);
+		}while(! done() && ++iteration < 100000);
 	}
 	
 	private boolean done()
@@ -125,7 +129,7 @@ public class Diffusion
 				travNewPlate = travNewPlate.right;
 				travOldPlate = travOldPlate.right;
 				
-				if(travNewPlate.temperature - travOldPlate.temperature != 0)
+				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) >= 0.00001)
 					return false;
 			}
 		}	
@@ -146,18 +150,16 @@ public class Diffusion
 	{
 		LatticePoint printRow = newPlateRoot;
 		
-		for(int i=0; i < dim+2; i++)
-		{
+		for(int i=0; i < dim; i++)
+		{	
+			printRow = printRow.down;
 			LatticePoint printTrav = printRow;
 			
-			for(int j=0; j < dim+2; j++)
+			for(int j=0; j < dim; j++)
 			{
-				System.out.format("%6.2f ", printTrav.temperature);
 				printTrav = printTrav.right;
-				
+				System.out.format("%6.2f ", printTrav.temperature);
 			}
-			printRow = printRow.down;
-			
 			System.out.println();
 		}	
 	}
