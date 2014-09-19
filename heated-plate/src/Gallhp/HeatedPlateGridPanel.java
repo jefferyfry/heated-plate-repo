@@ -41,6 +41,14 @@ public class HeatedPlateGridPanel extends JPanel {
 	}
     
     /**
+	 * @return the results
+	 */
+	public double[][] getResults() {
+		return results;
+	}
+
+
+	/**
      * Resets the heated plate grid to nothing.
      */
     public void reset(){

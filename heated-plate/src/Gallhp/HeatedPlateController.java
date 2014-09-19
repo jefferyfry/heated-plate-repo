@@ -35,9 +35,6 @@ public class HeatedPlateController {
 	//status flag for the executor thread
 	private boolean go=true;
 	
-	//running elapsed time
-	private long elapsedTime=0;
-	
 	//listeners
 	private List<HeatedPlateControllerListener> listeners = new ArrayList<HeatedPlateControllerListener>();
 
@@ -77,7 +74,6 @@ public class HeatedPlateController {
 		thisHeatedPlate.initialize(dimension, left, right, top, bottom);
 		this.animation=animation;
 		this.go=true;
-		this.elapsedTime=0;
 		(new Executor()).start();
 	}
 	
@@ -96,21 +92,6 @@ public class HeatedPlateController {
 	private void fireHaveResults(double[][] results){
 		for(HeatedPlateControllerListener listener:listeners)
 			listener.haveResults(results);
-	}
-	
-	private void fireHaveElapsedTime(long time){
-		for(HeatedPlateControllerListener listener:listeners)
-			listener.haveElapsedTime(elapsedTime+=time);
-	}
-	
-	private void fireHaveMemoryUsage(long memoryUsage){
-		for(HeatedPlateControllerListener listener:listeners)
-			listener.haveMemoryUsage(memoryUsage);
-	}
-	
-	private void fireIterationCompleted(int iteration){
-		for(HeatedPlateControllerListener listener:listeners)
-			listener.iterationCompleted(iteration);
 	}
 	
 	private void fireFinished(){
@@ -152,29 +133,14 @@ public class HeatedPlateController {
 					//double[][] results = alg.next()
 					//fireHaveResults(results)
 					//thread.sleep(500)
-			Runtime runtime = Runtime.getRuntime();
-			runtime.gc();
-			long startMemory = runtime.totalMemory() - runtime.freeMemory();
 			if(!animation){
-				long startTime = System.currentTimeMillis();
 				double[][]results = thisHeatedPlate.getFinalResults();
-				long endTime = System.currentTimeMillis();
-				long endMemory = runtime.totalMemory() - runtime.freeMemory();
 				fireHaveResults(results);
-				fireHaveElapsedTime(endTime-startTime);
-				fireHaveMemoryUsage(endMemory-startMemory);
-				fireIterationCompleted(thisHeatedPlate.getIterations());
 			}
 			else { //animated
 				do{
-					long startTime = System.currentTimeMillis();
 					double[][] results = thisHeatedPlate.nextResults();
-					long endTime = System.currentTimeMillis();
-					long endMemory = runtime.totalMemory() - runtime.freeMemory();
 					fireHaveResults(results);
-					fireHaveElapsedTime(endTime-startTime);
-					fireHaveMemoryUsage(endMemory-startMemory);
-					fireIterationCompleted(thisHeatedPlate.getIterations());
 					try {
 						Thread.sleep(500);
 					}
@@ -203,24 +169,6 @@ public class HeatedPlateController {
 		 * @param results
 		 */
 		public void haveResults(double[][] results);
-		
-		/**
-		 * Provide the elapsed time for the last call.
-		 * @param elapsedTime
-		 */
-		public void haveElapsedTime(long elapsedTime);
-		
-		/**
-		 * Provide the cumulative delta memory usage.
-		 * @param memoryUsed
-		 */
-		public void haveMemoryUsage(long memoryUsed);
-		
-		/**
-		 * Provide the last completed iteration.
-		 * @param iteration
-		 */
-		public void iterationCompleted(int iteration);
 		
 		/**
 		 * Tells the listener that the algorithm finished.
