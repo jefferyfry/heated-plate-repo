@@ -36,11 +36,13 @@ panel.</body>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_GbKRQEAoEeS1D_5jL1d0RQ" name="MessageRecv0" covered="_4vRwEEAnEeS1D_5jL1d0RQ" message="_GbJDIEAoEeS1D_5jL1d0RQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_XcbZ4EAoEeS1D_5jL1d0RQ" name="MessageSend1" covered="_4vRwEEAnEeS1D_5jL1d0RQ" message="_Xcay0EAoEeS1D_5jL1d0RQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_XccA8EAoEeS1D_5jL1d0RQ" name="MessageRecv1" covered="_9gQLwEAnEeS1D_5jL1d0RQ" message="_Xcay0EAoEeS1D_5jL1d0RQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Hb_TwEA2EeS1D_5jL1d0RQ" name="MessageSend6" covered="_4vRwEEAnEeS1D_5jL1d0RQ" message="_Hb-ssEA2EeS1D_5jL1d0RQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Hb_TwUA2EeS1D_5jL1d0RQ" name="MessageRecv6" covered="_6kKOEEAnEeS1D_5jL1d0RQ" message="_Hb-ssEA2EeS1D_5jL1d0RQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_b3i6UEAoEeS1D_5jL1d0RQ" name="MessageSend2" covered="_4vRwEEAnEeS1D_5jL1d0RQ" message="_b3iTQEAoEeS1D_5jL1d0RQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_b3i6UUAoEeS1D_5jL1d0RQ" name="MessageRecv2" covered="_6kKOEEAnEeS1D_5jL1d0RQ" message="_b3iTQEAoEeS1D_5jL1d0RQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_fnmrkEAoEeS1D_5jL1d0RQ" name="MessageSend3" covered="_6kKOEEAnEeS1D_5jL1d0RQ" message="_fnmEgEAoEeS1D_5jL1d0RQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_fnmrkUAoEeS1D_5jL1d0RQ" name="MessageRecv3" covered="_6kKOEEAnEeS1D_5jL1d0RQ" message="_fnmEgEAoEeS1D_5jL1d0RQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_MBLCEEApEeS1D_5jL1d0RQ" name="MessageSend4" covered="_6kKOEEAnEeS1D_5jL1d0RQ" message="_MBKbAEApEeS1D_5jL1d0RQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_MBLCEEApEeS1D_5jL1d0RQ" name="MessageSend4" message="_MBKbAEApEeS1D_5jL1d0RQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_MBLpIEApEeS1D_5jL1d0RQ" name="MessageRecv4" covered="_3d-gQEAnEeS1D_5jL1d0RQ" message="_MBKbAEApEeS1D_5jL1d0RQ"/>
     <fragment xmi:type="uml:CombinedFragment" xmi:id="_uCY6IEAoEeS1D_5jL1d0RQ" name="CombinedFragment" covered="_6kKOEEAnEeS1D_5jL1d0RQ _9gQLwEAnEeS1D_5jL1d0RQ _4vRwEEAnEeS1D_5jL1d0RQ _3d-gQEAnEeS1D_5jL1d0RQ" interactionOperator="loop">
       <operand xmi:type="uml:InteractionOperand" xmi:id="_uCb9cEAoEeS1D_5jL1d0RQ" name="InteractionOperand" covered="_6kKOEEAnEeS1D_5jL1d0RQ _9gQLwEAnEeS1D_5jL1d0RQ _4vRwEEAnEeS1D_5jL1d0RQ _3d-gQEAnEeS1D_5jL1d0RQ">
@@ -59,8 +61,8 @@ panel.</body>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_wsiWwUApEeS1D_5jL1d0RQ" name="MessageRecv5" covered="_3d-gQEAnEeS1D_5jL1d0RQ" message="_wshvsEApEeS1D_5jL1d0RQ"/>
     <lifeline xmi:type="uml:Lifeline" xmi:id="_2MY8kEAnEeS1D_5jL1d0RQ" name="Actor" coveredBy="_DF8o8EAoEeS1D_5jL1d0RQ"/>
     <lifeline xmi:type="uml:Lifeline" xmi:id="_3d-gQEAnEeS1D_5jL1d0RQ" name="HeatedPlateFrame" coveredBy="_DF9QAEAoEeS1D_5jL1d0RQ _GbJqMEAoEeS1D_5jL1d0RQ _MBLpIEApEeS1D_5jL1d0RQ _uCY6IEAoEeS1D_5jL1d0RQ _uCb9cEAoEeS1D_5jL1d0RQ _gHtSgEApEeS1D_5jL1d0RQ _wsiWwUApEeS1D_5jL1d0RQ"/>
-    <lifeline xmi:type="uml:Lifeline" xmi:id="_4vRwEEAnEeS1D_5jL1d0RQ" name="HeatedPlateController" coveredBy="_GbKRQEAoEeS1D_5jL1d0RQ _XcbZ4EAoEeS1D_5jL1d0RQ _b3i6UEAoEeS1D_5jL1d0RQ _uCY6IEAoEeS1D_5jL1d0RQ _uCb9cEAoEeS1D_5jL1d0RQ"/>
-    <lifeline xmi:type="uml:Lifeline" xmi:id="_6kKOEEAnEeS1D_5jL1d0RQ" name="HeatedPlateController.Executor" coveredBy="_b3i6UUAoEeS1D_5jL1d0RQ _fnmrkEAoEeS1D_5jL1d0RQ _fnmrkUAoEeS1D_5jL1d0RQ _uCY6IEAoEeS1D_5jL1d0RQ _uCb9cEAoEeS1D_5jL1d0RQ _MBLCEEApEeS1D_5jL1d0RQ _PoTg0EApEeS1D_5jL1d0RQ _gHsrcEApEeS1D_5jL1d0RQ _q9Ij8EApEeS1D_5jL1d0RQ _wsiWwEApEeS1D_5jL1d0RQ"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_4vRwEEAnEeS1D_5jL1d0RQ" name="HeatedPlateController" coveredBy="_GbKRQEAoEeS1D_5jL1d0RQ _XcbZ4EAoEeS1D_5jL1d0RQ _b3i6UEAoEeS1D_5jL1d0RQ _uCY6IEAoEeS1D_5jL1d0RQ _uCb9cEAoEeS1D_5jL1d0RQ _Hb_TwEA2EeS1D_5jL1d0RQ"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_6kKOEEAnEeS1D_5jL1d0RQ" name="HeatedPlateController.Executor" coveredBy="_b3i6UUAoEeS1D_5jL1d0RQ _fnmrkEAoEeS1D_5jL1d0RQ _fnmrkUAoEeS1D_5jL1d0RQ _uCY6IEAoEeS1D_5jL1d0RQ _uCb9cEAoEeS1D_5jL1d0RQ _PoTg0EApEeS1D_5jL1d0RQ _gHsrcEApEeS1D_5jL1d0RQ _q9Ij8EApEeS1D_5jL1d0RQ _wsiWwEApEeS1D_5jL1d0RQ _Hb_TwUA2EeS1D_5jL1d0RQ"/>
     <lifeline xmi:type="uml:Lifeline" xmi:id="_9gQLwEAnEeS1D_5jL1d0RQ" name="Txxxhp4ui" coveredBy="_XccA8EAoEeS1D_5jL1d0RQ _uCY6IEAoEeS1D_5jL1d0RQ _uCb9cEAoEeS1D_5jL1d0RQ _PoUH4EApEeS1D_5jL1d0RQ _q9JLAEApEeS1D_5jL1d0RQ"/>
     <message xmi:type="uml:Message" xmi:id="_DF6MsEAoEeS1D_5jL1d0RQ" name="1:actionPerformed()" messageSort="asynchCall" receiveEvent="_DF9QAEAoEeS1D_5jL1d0RQ" sendEvent="_DF8o8EAoEeS1D_5jL1d0RQ"/>
     <message xmi:type="uml:Message" xmi:id="_GbJDIEAoEeS1D_5jL1d0RQ" name="2:start()" messageSort="asynchCall" receiveEvent="_GbKRQEAoEeS1D_5jL1d0RQ" sendEvent="_GbJqMEAoEeS1D_5jL1d0RQ"/>
@@ -72,5 +74,6 @@ panel.</body>
     <message xmi:type="uml:Message" xmi:id="_gHsEYEApEeS1D_5jL1d0RQ" name="8:haveResults()" messageSort="asynchCall" receiveEvent="_gHtSgEApEeS1D_5jL1d0RQ" sendEvent="_gHsrcEApEeS1D_5jL1d0RQ"/>
     <message xmi:type="uml:Message" xmi:id="_q9H84EApEeS1D_5jL1d0RQ" name="9:hasNext()" messageSort="asynchCall" receiveEvent="_q9JLAEApEeS1D_5jL1d0RQ" sendEvent="_q9Ij8EApEeS1D_5jL1d0RQ"/>
     <message xmi:type="uml:Message" xmi:id="_wshvsEApEeS1D_5jL1d0RQ" name="10:finished()" messageSort="asynchCall" receiveEvent="_wsiWwUApEeS1D_5jL1d0RQ" sendEvent="_wsiWwEApEeS1D_5jL1d0RQ"/>
+    <message xmi:type="uml:Message" xmi:id="_Hb-ssEA2EeS1D_5jL1d0RQ" name="11:create()" messageSort="createMessage" receiveEvent="_Hb_TwUA2EeS1D_5jL1d0RQ" sendEvent="_Hb_TwEA2EeS1D_5jL1d0RQ"/>
   </packagedElement>
 </uml:Model>
