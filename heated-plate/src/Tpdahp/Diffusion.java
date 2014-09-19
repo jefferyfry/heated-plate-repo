@@ -9,6 +9,8 @@ public class Diffusion
 	private int left, right, top, bottom;
 	int iteration;
 	
+	public Diffusion(){ }
+	
 	public Diffusion(int dim, int left, int right, int top, int bottom)
 	{
 		this.dim = dim;
@@ -27,7 +29,7 @@ public class Diffusion
 	    //printTable();
 	}
 	
-	public int getIteration() { return iteration; }
+	public int getIteration() { return iteration-1; }
 	
 	public void initialize(double[][] plate)
 	{

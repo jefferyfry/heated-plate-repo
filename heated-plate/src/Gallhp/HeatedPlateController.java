@@ -30,7 +30,7 @@ public class HeatedPlateController {
 	private HeatedPlate tpdohp4ui = new Tpdohp4ui();
 	
 	//determines whether the heated plate will be animated
-	private boolean animation=false;
+	private boolean animation = false;
 	
 	//status flag for the executor thread
 	private boolean go=true;

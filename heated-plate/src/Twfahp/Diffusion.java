@@ -34,7 +34,7 @@ public class Diffusion
 	    //printTable();
 	}
 	
-	public int getIteration() { return iteration; }
+	public int getIteration() { return iteration-1; }
 	
 	public void initialize(Float[][] plate)
 	{
