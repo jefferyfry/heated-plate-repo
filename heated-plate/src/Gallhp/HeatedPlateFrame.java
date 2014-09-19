@@ -1,10 +1,7 @@
 package Gallhp;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,6 +20,10 @@ import javax.swing.border.TitledBorder;
 @SuppressWarnings("serial")
 public class HeatedPlateFrame extends JFrame implements HeatedPlateController.HeatedPlateControllerListener, ActionListener {
 	
+	//constant strings for input tips
+	private final static String DIMENSION_RANGE_TIP = "  (0 < dimension <= 50)";
+	private final static String TEMPERATURE_RANGE_TIP = "  (0 <= temperature <= 100)";
+	
 	//all the gui widget components
 	private HeatedPlateController heatedPlateController = new HeatedPlateController();
 	private HeatedPlateGridPanel heatedPlateGridPanel = new HeatedPlateGridPanel();
@@ -35,10 +36,6 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 	private JCheckBox animateCheckBox = new JCheckBox("Animate");
 	private JButton getResultsButton = new JButton("Get Results");
 	private JButton cancelButton = new JButton("Cancel");
-	
-	private JLabel elapsedTimeLabel = new JLabel("0");
-	private JLabel memoryUsageLabel = new JLabel("0");
-	private JLabel iterationLabel = new JLabel("0");
 
 	/**
 	 * Default constructor for the main window.
@@ -64,26 +61,31 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		JPanel plateDimensionSpinnerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		plateDimensionSpinnerPanel.add(new JLabel("Plate Dimension:"));
 		plateDimensionSpinnerPanel.add(plateDimensionSpinner);
+		plateDimensionSpinnerPanel.add(new JLabel(DIMENSION_RANGE_TIP));
 		controlPanel.add(plateDimensionSpinnerPanel);
 		
 		JPanel leftEdgeTemperatureSpinnerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		leftEdgeTemperatureSpinnerPanel.add(new JLabel("Left Edge Temperature:"));
 		leftEdgeTemperatureSpinnerPanel.add(leftEdgeTemperatureSpinner);
+		leftEdgeTemperatureSpinnerPanel.add(new JLabel(TEMPERATURE_RANGE_TIP));
 		controlPanel.add(leftEdgeTemperatureSpinnerPanel);
 		
 		JPanel rightEdgeTemperatureSpinnerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		rightEdgeTemperatureSpinnerPanel.add(new JLabel("Right Edge Temperature:"));
 		rightEdgeTemperatureSpinnerPanel.add(rightEdgeTemperatureSpinner);
+		rightEdgeTemperatureSpinnerPanel.add(new JLabel(TEMPERATURE_RANGE_TIP));
 		controlPanel.add(rightEdgeTemperatureSpinnerPanel);
 		
 		JPanel topEdgeTemperatureSpinnerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		topEdgeTemperatureSpinnerPanel.add(new JLabel("Top Edge Temperature:"));
 		topEdgeTemperatureSpinnerPanel.add(topEdgeTemperatureSpinner);
+		topEdgeTemperatureSpinnerPanel.add(new JLabel(TEMPERATURE_RANGE_TIP));
 		controlPanel.add(topEdgeTemperatureSpinnerPanel);
 		
 		JPanel bottomEdgeTemperatureSpinnerPanel = new JPanel();
 		bottomEdgeTemperatureSpinnerPanel.add(new JLabel("Bottom Edge Temperature:"));
 		bottomEdgeTemperatureSpinnerPanel.add(bottomEdgeTemperatureSpinner);
+		bottomEdgeTemperatureSpinnerPanel.add(new JLabel(TEMPERATURE_RANGE_TIP));
 		controlPanel.add(bottomEdgeTemperatureSpinnerPanel);
 		
 		JPanel animateCheckBoxPanel = new JPanel();
@@ -99,51 +101,6 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		controlPanel.add(buttonPanel);
 		
 		getContentPane().add(controlPanel,BorderLayout.WEST);
-		
-		//create the performance panel on the right
-		JPanel performancePanel = new JPanel(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
-		performancePanel.setBorder(new TitledBorder("Performance"));
-		
-		JPanel elapsedTimePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		elapsedTimePanel.add(new JLabel("Elasped Time (ms):"));
-		elapsedTimePanel.add(elapsedTimeLabel);
-		gbc.gridy = 0;
-		gbc.gridx = 1;
-		gbc.anchor = GridBagConstraints.NORTHWEST;
-		gbc.weightx = 1;
-		gbc.weighty = 0.1;
-		performancePanel.add(elapsedTimePanel,gbc);
-		
-		JPanel memoryUsagePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		memoryUsagePanel.add(new JLabel("Memory Usage (bytes):"));
-		memoryUsagePanel.add(memoryUsageLabel);
-		gbc.gridy = 1;
-		gbc.gridx = 1;
-		gbc.anchor = GridBagConstraints.NORTHWEST;
-		gbc.weightx = 1;
-		gbc.weighty = 0.1;
-		performancePanel.add(memoryUsagePanel,gbc);
-		
-		JPanel iterationPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		iterationPanel.add(new JLabel("Iterations:"));
-		iterationPanel.add(iterationLabel);
-		gbc.gridy = 2;
-		gbc.gridx = 1;
-		gbc.anchor = GridBagConstraints.NORTHWEST;
-		gbc.weightx = 1;
-		gbc.weighty = 0.1;
-		performancePanel.add(iterationPanel,gbc);
-		
-		gbc.gridy = 4;
-		gbc.gridx = 1;
-		gbc.anchor = GridBagConstraints.NORTHWEST;
-		gbc.weightx = 1;
-		gbc.weighty = 1;
-		gbc.fill = GridBagConstraints.BOTH;
-		performancePanel.add(new JPanel(),gbc);
-		performancePanel.setPreferredSize(new Dimension(250,performancePanel.getHeight())); 
-		getContentPane().add(performancePanel,BorderLayout.EAST);
 		
 		heatedPlateController.addListener(this);
 	}
@@ -187,11 +144,6 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		//enable disable buttons, fields
 		setControlPanel(false);
 		
-		//reset analysis
-		elapsedTimeLabel.setText("0");
-		memoryUsageLabel.setText("0");
-		iterationLabel.setText("0");
-		
 		//initialize heated plate
 		heatedPlateGridPanel.reset();
 	}
@@ -201,29 +153,6 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		heatedPlateGridPanel.setResults(results);
 	}
 
-	/* (non-Javadoc)
-	 * @see Gallhp.HeatedPlateController.HeatedPlateControllerListener#haveElapsedTime(long)
-	 */
-	@Override
-	public void haveElapsedTime(long elapsedTime) {
-		elapsedTimeLabel.setText(Long.toString(elapsedTime));
-	}
-
-	/* (non-Javadoc)
-	 * @see Gallhp.HeatedPlateController.HeatedPlateControllerListener#haveMemoryUsage(long)
-	 */
-	@Override
-	public void haveMemoryUsage(long memoryUsed) {
-		memoryUsageLabel.setText(Long.toString(memoryUsed));
-	}
-
-	/* (non-Javadoc)
-	 * @see Gallhp.HeatedPlateController.HeatedPlateControllerListener#iterationCompleted(int)
-	 */
-	@Override
-	public void iterationCompleted(int iteration) {
-		iterationLabel.setText(Integer.toString(iteration));
-	}
 
 	@Override
 	public void finished() {
