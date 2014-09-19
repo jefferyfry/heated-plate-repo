@@ -47,6 +47,7 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		//the heated plate is in the "center"
 		getContentPane().add(heatedPlateGridPanel,BorderLayout.CENTER);
 		heatedPlateGridPanel.setBorder(new TitledBorder("Heated Plate Results"));
+		heatedPlateGridPanel.setName("heatedPlateGridPanel"); //for gui testing
 		
 		//create the control panel on the left with all the parameters
 		JPanel controlPanel = new JPanel();
@@ -56,45 +57,55 @@ public class HeatedPlateFrame extends JFrame implements HeatedPlateController.He
 		JPanel heatedPlateAlgoComboBoxPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		heatedPlateAlgoComboBoxPanel.add(new JLabel("Heated Plate Type:"));
 		heatedPlateAlgoComboBoxPanel.add(heatedPlateAlgoComboBox);
+		heatedPlateAlgoComboBox.setName("heatedPlateAlgoComboBox"); //for gui testing
 		controlPanel.add(heatedPlateAlgoComboBoxPanel);
 		
 		JPanel plateDimensionSpinnerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		plateDimensionSpinnerPanel.add(new JLabel("Plate Dimension:"));
 		plateDimensionSpinnerPanel.add(plateDimensionSpinner);
 		plateDimensionSpinnerPanel.add(new JLabel(DIMENSION_RANGE_TIP));
+		plateDimensionSpinner.setName("plateDimensionSpinner"); //for gui testing
 		controlPanel.add(plateDimensionSpinnerPanel);
 		
 		JPanel leftEdgeTemperatureSpinnerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		leftEdgeTemperatureSpinnerPanel.add(new JLabel("Left Edge Temperature:"));
 		leftEdgeTemperatureSpinnerPanel.add(leftEdgeTemperatureSpinner);
 		leftEdgeTemperatureSpinnerPanel.add(new JLabel(TEMPERATURE_RANGE_TIP));
+		leftEdgeTemperatureSpinner.setName("leftEdgeTemperatureSpinner"); //for gui testing
 		controlPanel.add(leftEdgeTemperatureSpinnerPanel);
+		
 		
 		JPanel rightEdgeTemperatureSpinnerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		rightEdgeTemperatureSpinnerPanel.add(new JLabel("Right Edge Temperature:"));
 		rightEdgeTemperatureSpinnerPanel.add(rightEdgeTemperatureSpinner);
 		rightEdgeTemperatureSpinnerPanel.add(new JLabel(TEMPERATURE_RANGE_TIP));
+		rightEdgeTemperatureSpinner.setName("rightEdgeTemperatureSpinner"); //for gui testing
 		controlPanel.add(rightEdgeTemperatureSpinnerPanel);
 		
 		JPanel topEdgeTemperatureSpinnerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		topEdgeTemperatureSpinnerPanel.add(new JLabel("Top Edge Temperature:"));
 		topEdgeTemperatureSpinnerPanel.add(topEdgeTemperatureSpinner);
 		topEdgeTemperatureSpinnerPanel.add(new JLabel(TEMPERATURE_RANGE_TIP));
+		topEdgeTemperatureSpinner.setName("topEdgeTemperatureSpinner"); //for gui testing
 		controlPanel.add(topEdgeTemperatureSpinnerPanel);
 		
 		JPanel bottomEdgeTemperatureSpinnerPanel = new JPanel();
 		bottomEdgeTemperatureSpinnerPanel.add(new JLabel("Bottom Edge Temperature:"));
 		bottomEdgeTemperatureSpinnerPanel.add(bottomEdgeTemperatureSpinner);
 		bottomEdgeTemperatureSpinnerPanel.add(new JLabel(TEMPERATURE_RANGE_TIP));
+		bottomEdgeTemperatureSpinner.setName("bottomEdgeTemperatureSpinner"); //for gui testing
 		controlPanel.add(bottomEdgeTemperatureSpinnerPanel);
 		
 		JPanel animateCheckBoxPanel = new JPanel();
 		animateCheckBoxPanel.add(animateCheckBox);
+		animateCheckBox.setName("animateCheckBox"); //for gui testing
 		controlPanel.add(animateCheckBoxPanel);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(getResultsButton);
+		getResultsButton.setName("getResultsButton"); //for gui testing
 		buttonPanel.add(cancelButton);
+		cancelButton.setName("cancelButton"); //for gui testing
 		getResultsButton.addActionListener(this);
 		cancelButton.setEnabled(false);
 		cancelButton.addActionListener(this);
