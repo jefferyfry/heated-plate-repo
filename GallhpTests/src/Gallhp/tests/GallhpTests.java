@@ -54,19 +54,20 @@ public class GallhpTests extends TestCase {
 		FileWriter write = new FileWriter("resultsGUI.csv");
 		PrintWriter pw = new PrintWriter(write);
 		
+		pw.println("\nDimension: , " + dim);
+		pw.println("\nLeft Temp: , " + left + "\nTop Temp: , " + top + "\nRight Temp: , " + right + "\nBottom Temp: , " + bottom);
+		
 		for(int i=0; i < 4; i++)
 		{
 			gui.comboBox("heatedPlateAlgoComboBox").selectItem(i);
 			pw.println("\nAlgorithm: " + gui.comboBox("heatedPlateAlgoComboBox").contents()[i]);
 			
 			gui.spinner("plateDimensionSpinner").enterText(dim);
-			pw.println("\nDimension: , " + dim);
 			
 			gui.spinner("leftEdgeTemperatureSpinner").enterText(left);
 			gui.spinner("rightEdgeTemperatureSpinner").enterText(right);
 			gui.spinner("topEdgeTemperatureSpinner").enterText(top);
 			gui.spinner("bottomEdgeTemperatureSpinner").enterText(bottom);
-			pw.println("\nLeft Temp: , " + left + "\nTop Temp: , " + top + "\nRight Temp: , " + right + "\nBottom Temp: , " + bottom);
 			
 			if(animate == 0)
 				gui.checkBox("animateCheckBox").check();
@@ -79,7 +80,9 @@ public class GallhpTests extends TestCase {
 			runtime.gc();
 			
 			long startTime = System.currentTimeMillis();
+			
 			while(!gui.button("getResultsButton").target.isEnabled());
+			
 			long endTime = System.currentTimeMillis();
 			long endMemory = runtime.totalMemory() - runtime.freeMemory();
 			

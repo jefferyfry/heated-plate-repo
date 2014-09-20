@@ -152,9 +152,6 @@ public class Tester
 				System.out.println("Elapsed Time (ms): " + (endTime-startTime));
 				pw.println("Elapsed Time (ms): , " + (endTime-startTime));
 				
-				tpdahp.printTable();
-				System.out.println(tpdahp.getIteration());
-				
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpfahp - float precision - 4 bytes - 32 bits");
@@ -207,7 +204,7 @@ public class Tester
 				
 			}while(runAgain == 0);
 		}
-		else
+		else //Step-Range choice
 		{
 			int dimStart = Integer.parseInt(JOptionPane.showInputDialog("Starting dimension?"));
 			int dimEnd = Integer.parseInt(JOptionPane.showInputDialog("Ending dimension?"));
