@@ -24,7 +24,6 @@ public class Diffusion
 		initialize(oldPlate);
 	    initialize(newPlate);
 	    diffuse();
-	    //printTable();
 	}
 	
 	public int getIteration() { return iteration; }
@@ -53,14 +52,14 @@ public class Diffusion
 	
 			swap();
 	      
-		}while(! done() && ++iteration < 10000);
+		}while(! done() && ++iteration < Math.max(10000, dim * 100));
 	}
 	
 	private boolean done()
 	{
 		for(int i=1; i <= dim; i++)
 			for(int j=1; j <= dim; j++)
-				if(newPlate[i][j] - oldPlate[i][j] != 0)
+				if(Math.abs(newPlate[i][j] - oldPlate[i][j]) >= 0.000001)
 					return false;
 					
 		return true;

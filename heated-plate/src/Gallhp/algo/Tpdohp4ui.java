@@ -108,7 +108,7 @@ public class Tpdohp4ui implements HeatedPlate {
 	 */
 	@Override
 	public boolean hasNext() {
-		return (!done() && iteration < 1000000);
+		return (!done() && iteration < Math.max(10000, dimension * 100));
 	}
 
 	/* (non-Javadoc)
@@ -139,7 +139,7 @@ public class Tpdohp4ui implements HeatedPlate {
 		     
 			swap();
 	      
-		}while(! done() && ++iteration < 1000000);
+		}while(! done() && ++iteration < Math.max(10000, dimension * 100));
 		
 		return convert2double(newPlateRoot);
 	}
@@ -196,7 +196,7 @@ public class Tpdohp4ui implements HeatedPlate {
 				travNewPlate = travNewPlate.right;
 				travOldPlate = travOldPlate.right;
 				
-				if(travNewPlate.temperature - travOldPlate.temperature != 0)
+				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.000001)
 					return false;
 			}
 		}	

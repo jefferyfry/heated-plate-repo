@@ -31,7 +31,6 @@ public class Diffusion
 		oldPlateRoot = initialize(oldPlateRoot);
 		newPlateRoot = initialize(newPlateRoot);
 	    diffuse();
-	    //printTable();
 	}
 	
 	public int getIteration() { return iteration; }
@@ -104,12 +103,8 @@ public class Diffusion
 			}	
 		     
 			swap();
-			
-			//System.out.println(iteration);
-			//printTable();
-			
 	      
-		}while(! done() && ++iteration < 100000);
+		}while(! done() && ++iteration < Math.max(10000, dim * 100));
 	}
 	
 	private boolean done()
@@ -129,7 +124,7 @@ public class Diffusion
 				travNewPlate = travNewPlate.right;
 				travOldPlate = travOldPlate.right;
 				
-				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) >= 0.00001)
+				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.000001)
 					return false;
 			}
 		}	

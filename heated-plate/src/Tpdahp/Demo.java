@@ -24,7 +24,6 @@ public class Demo
 		}
 	
 		Diffusion diff = new Diffusion(dim, left, right, top, bottom);
-		//diff.printTable();
-		diff.getIteration();
+		diff.printTable();
 	}
 }
