@@ -196,7 +196,7 @@ public class Tpdohp4ui implements HeatedPlate {
 				travNewPlate = travNewPlate.right;
 				travOldPlate = travOldPlate.right;
 				
-				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.000001)
+				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.0001)
 					return false;
 			}
 		}	

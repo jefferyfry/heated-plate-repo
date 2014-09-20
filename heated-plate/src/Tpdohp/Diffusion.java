@@ -124,7 +124,7 @@ public class Diffusion
 				travNewPlate = travNewPlate.right;
 				travOldPlate = travOldPlate.right;
 				
-				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.000001)
+				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.0001)
 					return false;
 			}
 		}	

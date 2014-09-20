@@ -103,7 +103,7 @@ public class Tpdahp4ui implements HeatedPlate {
 	{
 		for(int i=1; i <= this.dimension; i++)
 			for(int j=1; j <= this.dimension; j++)
-				if(Math.abs(newPlate[i][j] - oldPlate[i][j]) >= 0.000001)
+				if(Math.abs(newPlate[i][j] - oldPlate[i][j]) >= 0.0001)
 					return false;
 		
 		return true;

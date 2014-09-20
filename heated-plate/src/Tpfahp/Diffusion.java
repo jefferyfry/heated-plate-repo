@@ -59,7 +59,7 @@ public class Diffusion
 	{
 		for(int i=1; i <= dim; i++)
 			for(int j=1; j <= dim; j++)
-				if(Math.abs(newPlate[i][j] - oldPlate[i][j]) >= 0.000001)
+				if(Math.abs(newPlate[i][j] - oldPlate[i][j]) >= 0.0001)
 					return false;
 					
 		return true;

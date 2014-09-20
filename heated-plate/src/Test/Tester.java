@@ -52,6 +52,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpdahp - double precision - 8 bytes - 64 bits");
+				pw.println("\nPrecision: Tpdahp - double precision - 8 bytes - 64 bits");
 				long startTime = System.currentTimeMillis();
 				Tpdahp.Diffusion tpdahp = new Tpdahp.Diffusion(dim, left, right, top, bottom);
 				long endTime = System.currentTimeMillis();
@@ -67,6 +68,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpfahp - float precision - 4 bytes - 32 bits");
+				pw.println("\nPrecision: Tpfahp - float precision - 4 bytes - 32 bits");
 				startTime = System.currentTimeMillis();
 				Tpfahp.Diffusion tpfahp = new Tpfahp.Diffusion(dim, left, right, top, bottom);
 				endTime = System.currentTimeMillis();
@@ -82,6 +84,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Twfahp - Float precision - 4 bytes - 32 bits");
+				pw.println("\nPrecision: Twfahp - Float precision - 4 bytes - 32 bits");
 				startTime = System.currentTimeMillis();
 				Twfahp.Diffusion twfahp = new Twfahp.Diffusion(dim, left, right, top, bottom);
 				endTime = System.currentTimeMillis();
@@ -97,6 +100,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpdohp - double precision - 8 bytes - 64 bits");
+				pw.println("\nPrecision: Tpdohp - double precision - 8 bytes - 64 bits");
 				startTime = System.currentTimeMillis();
 				Tpdohp.Diffusion tpdohp = new Tpdohp.Diffusion(dim, left, right, top, bottom);
 				endTime = System.currentTimeMillis();
@@ -135,6 +139,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpdahp - double precision - 8 bytes - 64 bits");
+				pw.println("\nPrecision: Tpdahp - double precision - 8 bytes - 64 bits");
 				long startTime = System.currentTimeMillis();
 				Tpdahp.Diffusion tpdahp = new Tpdahp.Diffusion(dim, left, right, top, bottom);
 				long endTime = System.currentTimeMillis();
@@ -147,9 +152,13 @@ public class Tester
 				System.out.println("Elapsed Time (ms): " + (endTime-startTime));
 				pw.println("Elapsed Time (ms): , " + (endTime-startTime));
 				
+				tpdahp.printTable();
+				System.out.println(tpdahp.getIteration());
+				
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpfahp - float precision - 4 bytes - 32 bits");
+				pw.println("\nPrecision: Tpfahp - float precision - 4 bytes - 32 bits");
 				startTime = System.currentTimeMillis();
 				Tpfahp.Diffusion tpfahp = new Tpfahp.Diffusion(dim, left, right, top, bottom);
 				endTime = System.currentTimeMillis();
@@ -165,6 +174,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Twfahp - Float precision - 4 bytes - 32 bits");
+				pw.println("\nPrecision: Twfahp - Float precision - 4 bytes - 32 bits");
 				startTime = System.currentTimeMillis();
 				Twfahp.Diffusion twfahp = new Twfahp.Diffusion(dim, left, right, top, bottom);
 				endTime = System.currentTimeMillis();
@@ -180,6 +190,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpdohp - double precision - 8 bytes - 64 bits");
+				pw.println("\nPrecision: Tpdohp - double precision - 8 bytes - 64 bits");
 				startTime = System.currentTimeMillis();
 				Tpdohp.Diffusion tpdohp = new Tpdohp.Diffusion(dim, left, right, top, bottom);
 				endTime = System.currentTimeMillis();
@@ -241,6 +252,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpdahp - double precision - 8 bytes - 64 bits");
+				pw.println("\nPrecision: Tpdahp - double precision - 8 bytes - 64 bits");
 				long startTime = System.currentTimeMillis();
 				Tpdahp.Diffusion tpdahp = new Tpdahp.Diffusion(d, tempLeftStart, tempRightStart, tempTopStart, tempBotStart);
 				long endTime = System.currentTimeMillis();
@@ -256,6 +268,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpfahp - float precision - 4 bytes - 32 bits");
+				pw.println("\nPrecision: Tpfahp - float precision - 4 bytes - 32 bits");
 				startTime = System.currentTimeMillis();
 				Tpfahp.Diffusion tpfahp = new Tpfahp.Diffusion(d, tempLeftStart, tempRightStart, tempTopStart, tempBotStart);
 				endTime = System.currentTimeMillis();
@@ -271,6 +284,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Twfahp - Float precision - 4 bytes - 32 bits");
+				pw.println("\nPrecision: Twfahp - Float precision - 4 bytes - 32 bits");
 				startTime = System.currentTimeMillis();
 				Twfahp.Diffusion twfahp = new Twfahp.Diffusion(d, tempLeftStart, tempRightStart, tempTopStart, tempBotStart);
 				endTime = System.currentTimeMillis();
@@ -286,6 +300,7 @@ public class Tester
 				runtime.gc();
 				
 				System.out.println("\nPrecision: Tpdohp - double precision - 8 bytes - 64 bits");
+				pw.println("\nPrecision: Tpdohp - double precision - 8 bytes - 64 bits");
 				startTime = System.currentTimeMillis();
 				Tpdohp.Diffusion tpdohp = new Tpdohp.Diffusion(d, tempLeftStart, tempRightStart, tempTopStart, tempBotStart);
 				endTime = System.currentTimeMillis();
