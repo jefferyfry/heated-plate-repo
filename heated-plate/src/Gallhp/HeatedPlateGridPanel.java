@@ -18,6 +18,8 @@ public class HeatedPlateGridPanel extends JPanel {
     
     //formatting of the text
     private DecimalFormat df = new DecimalFormat("###.##");
+    private DecimalFormat df1 = new DecimalFormat("###.#");
+    private DecimalFormat df2 = new DecimalFormat("###");
     
     //heated plate results
     private double[][] results;
@@ -75,7 +77,7 @@ public class HeatedPlateGridPanel extends JPanel {
      * @param col
      * @param value
      */
-    private void paintSquare(Graphics graphics, int row, int col, double value,int length, int cellSize) {
+    private void paintSquare(Graphics graphics, int row, int col, double value,int length, int cellSize,int dim) {
     	int ulhcY = (getHeight()-length)/2;
     	int ulhcX = (getWidth()-length)/2;
     	
@@ -95,7 +97,13 @@ public class HeatedPlateGridPanel extends JPanel {
 	        graphics.setFont(new Font("Arial", Font.PLAIN,9)); 
 	        graphics.setColor(Color.white);
 	        FontMetrics fm = graphics.getFontMetrics();
-	        String valueStr = df.format(value);
+	        String valueStr;
+	        if(dim<=25)
+	        	valueStr = df.format(value);
+	        else if(dim<=30)
+	        	valueStr =df1.format(value);
+	        else
+	        	valueStr = df2.format(value);
 	        int x = (cellSize - fm.stringWidth(valueStr)) / 2;
 	        int y = (fm.getAscent() + (cellSize - (fm.getAscent() + fm.getDescent())) / 2);
 	        graphics.drawString(valueStr, colPos+x, rowPos+y);
@@ -121,7 +129,7 @@ public class HeatedPlateGridPanel extends JPanel {
 	        for (int i = 0; i < results.length; i++)
 	            for (int j = 0; j < results.length; j++){
 	                double value = results[i][j];
-	                paintSquare(anotherGraphics, i, j, value,length,cellSize);
+	                paintSquare(anotherGraphics, i, j, value,length,cellSize,results.length-2);
 	            }
 	        
 	        //paint edge boundary
