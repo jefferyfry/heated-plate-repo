@@ -3,12 +3,6 @@ package Gallhp;
 import java.util.ArrayList;
 import java.util.List;
 
-import Gallhp.algo.HeatedPlate;
-import Gallhp.algo.Tpdahp4ui;
-import Gallhp.algo.Tpdohp4ui;
-import Gallhp.algo.Tpfahp4ui;
-import Gallhp.algo.Twfahp4ui;
-
 public class HeatedPlateController {
 	
 	//dummy class for generating random results for now

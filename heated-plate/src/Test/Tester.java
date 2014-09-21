@@ -54,14 +54,15 @@ public class Tester
 				System.out.println("\nPrecision: Tpdahp - double precision - 8 bytes - 64 bits");
 				pw.println("\nPrecision: Tpdahp - double precision - 8 bytes - 64 bits");
 				long startTime = System.currentTimeMillis();
+				long startMemory = runtime.totalMemory() - runtime.freeMemory();
 				Tpdahp.Diffusion tpdahp = new Tpdahp.Diffusion(dim, left, right, top, bottom);
 				long endTime = System.currentTimeMillis();
 				long endMemory = runtime.totalMemory() - runtime.freeMemory();
 				System.out.println("Iterations: " + tpdahp.getIteration());
 				pw.println("Iterations: , " + tpdahp.getIteration());
-				System.out.println("Max Memory in JVM (bytes): " + runtime.maxMemory() + "\nMemory Usage (bytes): " + endMemory);
-				pw.println("Max Memory in JVM (bytes): , " + runtime.maxMemory() + "\nMemory Usage (bytes): , " + endMemory);
-				System.out.println("Max Memory in JVM (MB): " + runtime.maxMemory()/1000000.0 + "\nMemory Usage (MB): " + endMemory/1000000.0);
+				System.out.println("Max Memory in JVM (bytes): " + runtime.maxMemory() + "\nMemory Usage (bytes): " + (endMemory-startMemory));
+				pw.println("Max Memory in JVM (bytes): , " + runtime.maxMemory() + "\nMemory Usage (bytes): , " + (endMemory-startMemory));
+				System.out.println("Max Memory in JVM (MB): " + runtime.maxMemory()/1000000.0 + "\nMemory Usage (MB): " + (endMemory-startMemory)/1000000.0);
 				System.out.println("Elapsed Time (ms): " + (endTime-startTime));
 				pw.println("Elapsed Time (ms): , " + (endTime-startTime));
 				
@@ -70,14 +71,15 @@ public class Tester
 				System.out.println("\nPrecision: Tpfahp - float precision - 4 bytes - 32 bits");
 				pw.println("\nPrecision: Tpfahp - float precision - 4 bytes - 32 bits");
 				startTime = System.currentTimeMillis();
+				startMemory = runtime.totalMemory() - runtime.freeMemory();
 				Tpfahp.Diffusion tpfahp = new Tpfahp.Diffusion(dim, left, right, top, bottom);
 				endTime = System.currentTimeMillis();
 				endMemory = runtime.totalMemory() - runtime.freeMemory();
 				System.out.println("Iterations: " + tpfahp.getIteration());
 				pw.println("Iterations: , " + tpfahp.getIteration());
-				System.out.println("Max Memory in JVM (bytes): " + runtime.maxMemory() + "\nMemory Usage (bytes): " + endMemory);
-				pw.println("Max Memory in JVM (bytes): , " + runtime.maxMemory() + "\nMemory Usage (bytes): , " + endMemory);
-				System.out.println("Max Memory in JVM (MB): " + runtime.maxMemory()/1000000.0 + "\nMemory Usage (MB): " + endMemory/1000000.0);
+				System.out.println("Max Memory in JVM (bytes): " + runtime.maxMemory() + "\nMemory Usage (bytes): " + (endMemory-startMemory));
+				pw.println("Max Memory in JVM (bytes): , " + runtime.maxMemory() + "\nMemory Usage (bytes): , " + (endMemory-startMemory));
+				System.out.println("Max Memory in JVM (MB): " + runtime.maxMemory()/1000000.0 + "\nMemory Usage (MB): " + (endMemory-startMemory)/1000000.0);
 				System.out.println("Elapsed Time (ms): " + (endTime-startTime));
 				pw.println("Elapsed Time (ms): , " + (endTime-startTime));
 				
@@ -86,14 +88,15 @@ public class Tester
 				System.out.println("\nPrecision: Twfahp - Float precision - 4 bytes - 32 bits");
 				pw.println("\nPrecision: Twfahp - Float precision - 4 bytes - 32 bits");
 				startTime = System.currentTimeMillis();
+				startMemory = runtime.totalMemory() - runtime.freeMemory();
 				Twfahp.Diffusion twfahp = new Twfahp.Diffusion(dim, left, right, top, bottom);
 				endTime = System.currentTimeMillis();
 				endMemory = runtime.totalMemory() - runtime.freeMemory();
 				System.out.println("Iterations: " + twfahp.getIteration());
 				pw.println("Iterations: , " + twfahp.getIteration());
-				System.out.println("Max Memory in JVM (bytes): " + runtime.maxMemory() + "\nMemory Usage (bytes): " + endMemory);
-				pw.println("Max Memory in JVM (bytes): , " + runtime.maxMemory() + "\nMemory Usage (bytes): , " + endMemory);
-				System.out.println("Max Memory in JVM (MB): " + runtime.maxMemory()/1000000.0 + "\nMemory Usage (MB): " + endMemory/1000000.0);
+				System.out.println("Max Memory in JVM (bytes): " + runtime.maxMemory() + "\nMemory Usage (bytes): " + (endMemory-startMemory));
+				pw.println("Max Memory in JVM (bytes): , " + runtime.maxMemory() + "\nMemory Usage (bytes): , " + (endMemory-startMemory));
+				System.out.println("Max Memory in JVM (MB): " + runtime.maxMemory()/1000000.0 + "\nMemory Usage (MB): " + (endMemory-startMemory)/1000000.0);
 				System.out.println("Elapsed Time (ms): " + (endTime-startTime));
 				pw.println("Elapsed Time (ms): , " + (endTime-startTime));
 				
@@ -102,14 +105,15 @@ public class Tester
 				System.out.println("\nPrecision: Tpdohp - double precision - 8 bytes - 64 bits");
 				pw.println("\nPrecision: Tpdohp - double precision - 8 bytes - 64 bits");
 				startTime = System.currentTimeMillis();
+				startMemory = runtime.totalMemory() - runtime.freeMemory();
 				Tpdohp.Diffusion tpdohp = new Tpdohp.Diffusion(dim, left, right, top, bottom);
 				endTime = System.currentTimeMillis();
 				endMemory = runtime.totalMemory() - runtime.freeMemory();
 				System.out.println("Iterations: " + tpdohp.getIteration());
 				pw.println("Iterations: , " + tpdohp.getIteration());
-				System.out.println("Max Memory in JVM (bytes): " + runtime.maxMemory() + "\nMemory Usage (bytes): " + endMemory);
-				pw.println("Max Memory in JVM (bytes): , " + runtime.maxMemory() + "\nMemory Usage (bytes): , " + endMemory);
-				System.out.println("Max Memory in JVM (MB): " + runtime.maxMemory()/1000000.0 + "\nMemory Usage (MB): " + endMemory/1000000.0);
+				System.out.println("Max Memory in JVM (bytes): " + runtime.maxMemory() + "\nMemory Usage (bytes): " + (endMemory-startMemory));
+				pw.println("Max Memory in JVM (bytes): , " + runtime.maxMemory() + "\nMemory Usage (bytes): , " + (endMemory-startMemory));
+				System.out.println("Max Memory in JVM (MB): " + runtime.maxMemory()/1000000.0 + "\nMemory Usage (MB): " + (endMemory-startMemory)/1000000.0);
 				System.out.println("Elapsed Time (ms): " + (endTime-startTime));
 				pw.println("Elapsed Time (ms): , " + (endTime-startTime));
 			}

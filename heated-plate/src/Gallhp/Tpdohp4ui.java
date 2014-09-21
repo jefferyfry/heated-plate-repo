@@ -1,4 +1,4 @@
-package Gallhp.algo;
+package Gallhp;
 
 /**
  * Class for the Tpdohp algorithm.

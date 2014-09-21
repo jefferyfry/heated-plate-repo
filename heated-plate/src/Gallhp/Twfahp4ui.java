@@ -1,21 +1,22 @@
-package Gallhp.algo;
+package Gallhp;
 
 /**
- * Class for the Tpdahp algorithm.
+ * Class for the Twfahp algorithm.
  * @author jeffro
  *
  */
-public class Tpdahp4ui implements HeatedPlate {
-	
+public class Twfahp4ui implements HeatedPlate {
+
 	private int dimension;
-	private double left;
-	private double right;
-	private double top;
-	private double bottom;
+	private Float left;
+	private Float right;
+	private Float top;
+	private Float bottom;
 	private int iteration=0;
 	
-	private double oldPlate[][];
-	private double newPlate[][];
+	private Float oldPlate[][];
+	private Float newPlate[][];
+
 
 	/* (non-Javadoc)
 	 * @see Gallhp.algo.HeatedPlate#initialize(int, double, double, double, double)
@@ -24,21 +25,21 @@ public class Tpdahp4ui implements HeatedPlate {
 	public void initialize(int dimension, int left, int right,
 			int top, int bottom) {
 		this.dimension = dimension;
-		this.left=left;
-		this.right=right;
-		this.top=top;
-		this.bottom=bottom;
+		this.left=new Float(left);
+		this.right=new Float(right);
+		this.top=new Float(top);
+		this.bottom=new Float(bottom);
 		this.iteration=0;
 		
-		oldPlate = new double[dimension + 2][dimension + 2];
-		newPlate = new double[dimension + 2][dimension + 2];
+		oldPlate = new Float[dimension + 2][dimension + 2];
+		newPlate = new Float[dimension + 2][dimension + 2];
 		
 		initializePlate(oldPlate);
 	    initializePlate(newPlate);
 
 	}
-	
-	private void initializePlate(double[][] plate)
+
+	private void initializePlate(Float[][] plate)
 	{
 		for(int i=1; i <= this.dimension; i++)
 		{
@@ -48,6 +49,16 @@ public class Tpdahp4ui implements HeatedPlate {
 			plate[0][i] = top;
 			plate[this.dimension+1][i] = bottom;
 		}
+		
+		//initialize the corners to 0
+		plate[0][0] = new Float(0);
+		plate[this.dimension+1][0] = new Float(0);
+		plate[0][this.dimension+1] = new Float(0);
+		plate[this.dimension+1][this.dimension+1] = new Float(0);
+		
+		for(int i=1; i <= this.dimension; i++)
+			for(int j=1; j <= this.dimension; j++)
+				plate[i][j] = new Float(0);
 	}
 
 	/* (non-Javadoc)
@@ -58,11 +69,11 @@ public class Tpdahp4ui implements HeatedPlate {
 		for (int i = 1; i <= this.dimension; i++) 
 	        for (int j = 1; j <= this.dimension; j++) 
 	          newPlate[i][j] = (oldPlate[i + 1][j] + oldPlate[i - 1][j] +
-	                            oldPlate[i][j + 1] + oldPlate[i][j - 1]) / 4.0;
+	                            oldPlate[i][j + 1] + oldPlate[i][j - 1]) / 4.0F;
 	      
 		swap();
 		iteration++;
-		return newPlate;
+		return convert2double(newPlate);
 	}
 
 	/* (non-Javadoc)
@@ -82,13 +93,13 @@ public class Tpdahp4ui implements HeatedPlate {
 			for (int i = 1; i <= this.dimension; i++) 
 		        for (int j = 1; j <= this.dimension; j++) 
 		          newPlate[i][j] = (oldPlate[i + 1][j] + oldPlate[i - 1][j] +
-		                            oldPlate[i][j + 1] + oldPlate[i][j - 1]) / 4.0;
+		                            oldPlate[i][j + 1] + oldPlate[i][j - 1]) / 4.0F;
 		      
 			swap();
 		      
 		}while(! done() && ++iteration < Math.max(10000, dimension * 100));
-		System.out.println(this.getIterations());
-		return newPlate;
+		
+		return convert2double(newPlate);
 	}
 	
 	/* (non-Javadoc)
@@ -111,10 +122,20 @@ public class Tpdahp4ui implements HeatedPlate {
 	
 	private void swap()
 	{
-		double[][] temp;
+		Float[][] temp;
 		
 		temp = oldPlate;
 		oldPlate = newPlate;
 		newPlate = temp;
+	}
+	
+	private double[][] convert2double(Float[][] array){
+		double[][] newArray = new double[array.length][array.length];
+		for(int i=0;i<array.length;i++){
+			for(int j=0;j<array.length;j++){
+				newArray[i][j] = (double)array[i][j];
+			}
+		}
+		return newArray;
 	}
 }
