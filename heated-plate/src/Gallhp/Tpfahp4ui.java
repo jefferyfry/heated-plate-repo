@@ -103,11 +103,13 @@ public class Tpfahp4ui implements HeatedPlate {
 		return iteration;
 	}
 	
+	//return true if all the cells have a change less than or equal to 0.0001
+	//return false otherwise
 	private boolean done()
 	{
 		for(int i=1; i <= this.dimension; i++)
 			for(int j=1; j <= this.dimension; j++)
-				if(Math.abs(newPlate[i][j] - oldPlate[i][j]) >= 0.0001)
+				if(Math.abs(newPlate[i][j] - oldPlate[i][j]) > 0.0001)
 					return false;
 		
 		return true;

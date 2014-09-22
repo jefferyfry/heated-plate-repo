@@ -179,6 +179,8 @@ public class Tpdohp4ui implements HeatedPlate {
 		return iteration;
 	}
 	
+	//return true if all the cells have a change less than or equal to 0.0001
+	//return false otherwise
 	private boolean done()
 	{
 		LatticePoint newPlateRowIndex = newPlateRoot;
@@ -196,7 +198,7 @@ public class Tpdohp4ui implements HeatedPlate {
 				travNewPlate = travNewPlate.right;
 				travOldPlate = travOldPlate.right;
 				
-				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) >= 0.0001)
+				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.0001)
 					return false;
 			}
 		}	

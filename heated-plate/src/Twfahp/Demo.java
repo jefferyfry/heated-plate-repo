@@ -1,5 +1,10 @@
 package Twfahp;
 
+/**
+ * Demo is the simple launch class which just sets up the heated plate frame.
+ * @author aabreu
+ *
+ */
 public class Demo 
 {
 	public static void main(String...args) throws Exception 

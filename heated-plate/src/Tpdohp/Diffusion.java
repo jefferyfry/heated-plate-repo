@@ -1,5 +1,10 @@
 package Tpdohp;
 
+/**
+ * Class for the Tpdohp algorithm.
+ * @author aabreu
+ *
+ */
 public class Diffusion 
 {
 	private class LatticePoint
@@ -112,7 +117,7 @@ public class Diffusion
 		}while(! done() && ++iteration < Math.max(10000, dim * 100));
 	}
 	
-	//return true if all the cells have a change less than 0.0001
+	//return true if all the cells have a change less than or equal to 0.0001
 	//return false otherwise
 	private boolean done()
 	{
@@ -131,7 +136,7 @@ public class Diffusion
 				travNewPlate = travNewPlate.right;
 				travOldPlate = travOldPlate.right;
 				
-				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) >= 0.0001)
+				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.0001)
 					return false;
 			}
 		}	
