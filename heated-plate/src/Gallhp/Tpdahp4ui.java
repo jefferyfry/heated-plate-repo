@@ -18,7 +18,7 @@ public class Tpdahp4ui implements HeatedPlate {
 	private double newPlate[][];
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#initialize(int, double, double, double, double)
+	 * @see Gallhp.HeatedPlate#initialize(int, double, double, double, double)
 	 */
 	@Override
 	public void initialize(int dimension, int left, int right,
@@ -51,7 +51,7 @@ public class Tpdahp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#nextResults()
+	 * @see Gallhp.HeatedPlate#nextResults()
 	 */
 	@Override
 	public double[][] nextResults() {
@@ -66,7 +66,7 @@ public class Tpdahp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#hasNext()
+	 * @see Gallhp.HeatedPlate#hasNext()
 	 */
 	@Override
 	public boolean hasNext() {
@@ -74,7 +74,7 @@ public class Tpdahp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#getFinalResults()
+	 * @see Gallhp.HeatedPlate#getFinalResults()
 	 */
 	@Override
 	public double[][] getFinalResults() {
@@ -92,7 +92,7 @@ public class Tpdahp4ui implements HeatedPlate {
 	}
 	
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#getIterations()
+	 * @see Gallhp.HeatedPlate#getIterations()
 	 */
 	@Override
 	public int getIterations() {

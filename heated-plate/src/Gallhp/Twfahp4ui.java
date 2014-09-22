@@ -19,7 +19,7 @@ public class Twfahp4ui implements HeatedPlate {
 
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#initialize(int, double, double, double, double)
+	 * @see Gallhp.HeatedPlate#initialize(int, double, double, double, double)
 	 */
 	@Override
 	public void initialize(int dimension, int left, int right,
@@ -39,6 +39,9 @@ public class Twfahp4ui implements HeatedPlate {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see Gallhp.HeatedPlate#initializePlate(double[][])
+	 */
 	private void initializePlate(Float[][] plate)
 	{
 		for(int i=1; i <= this.dimension; i++)
@@ -62,7 +65,7 @@ public class Twfahp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#nextResults()
+	 * Gallhp.HeatedPlate#nextResults()
 	 */
 	@Override
 	public double[][] nextResults() {
@@ -77,7 +80,7 @@ public class Twfahp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#hasNext()
+	 * @see Gallhp.HeatedPlate#hasNext()
 	 */
 	@Override
 	public boolean hasNext() {
@@ -85,7 +88,7 @@ public class Twfahp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#getFinalResults()
+	 * @see Gallhp.HeatedPlate#getFinalResults()
 	 */
 	@Override
 	public double[][] getFinalResults() {
@@ -103,7 +106,7 @@ public class Twfahp4ui implements HeatedPlate {
 	}
 	
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#getIterations()
+	 * @see Gallhp.HeatedPlate#getIterations()
 	 */
 	@Override
 	public int getIterations() {

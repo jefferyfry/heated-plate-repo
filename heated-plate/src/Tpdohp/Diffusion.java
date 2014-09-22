@@ -35,14 +35,18 @@ public class Diffusion
 	
 	public int getIteration() { return iteration; }
 	
+	//initialize plate with temperatures on appropriate edges
+	//inner plate is implicitly set to zero for all cells not on an edge
 	public LatticePoint initialize(LatticePoint plateRoot)
 	{
+		//root node to keep a pointer to the plate grid
 		plateRoot = new LatticePoint(-1);
 		
-		LatticePoint rowIndex = plateRoot;
-		LatticePoint trav1 = rowIndex;
-		LatticePoint trav2;
+		LatticePoint rowIndex = plateRoot; //keep track of current row
+		LatticePoint trav1 = rowIndex; //node traveler for previous row
+		LatticePoint trav2; //node traveler for current row
 		
+		//create top row
 		for(int i=0; i < dim+1; i++)
 		{
 			trav1.right = new LatticePoint(topTemp);
@@ -61,8 +65,8 @@ public class Diffusion
 				trav1.down = trav2;
 				
 				int temp = 0;
-				if(j == dim) temp = rightTemp;
-				if(i == dim) temp = bottomTemp;
+				if(j == dim) temp = rightTemp; //if last column assign right temp
+				if(i == dim) temp = bottomTemp; //if last row assign bottom temp
 				
 				trav2.right = new LatticePoint(temp);
 				trav2.right.left = trav2;
@@ -77,6 +81,7 @@ public class Diffusion
 		return plateRoot;
 	}
 	
+	//simulation of heat diffusion on plate
 	public void diffuse()
 	{
 		iteration = 0;
@@ -107,6 +112,8 @@ public class Diffusion
 		}while(! done() && ++iteration < Math.max(10000, dim * 100));
 	}
 	
+	//return true if all the cells have a change less than 0.0001
+	//return false otherwise
 	private boolean done()
 	{
 		LatticePoint newPlateRowIndex = newPlateRoot;
@@ -124,7 +131,7 @@ public class Diffusion
 				travNewPlate = travNewPlate.right;
 				travOldPlate = travOldPlate.right;
 				
-				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.0001)
+				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) >= 0.0001)
 					return false;
 			}
 		}	
@@ -132,6 +139,7 @@ public class Diffusion
 		return true;
 	}
 	
+	//swap old and new plate 
 	private void swap()
 	{
 		LatticePoint temp;
@@ -141,6 +149,7 @@ public class Diffusion
 		newPlateRoot = temp;
 	}
 	
+	//print table with 2 decimal precision
 	public void printTable()
 	{
 		LatticePoint printRow = newPlateRoot;

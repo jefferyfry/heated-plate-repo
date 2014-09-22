@@ -7,6 +7,7 @@ public class Demo
 		int dim = 0;
 		int left = 0, right = 0, top = 0, bottom = 0;
 		
+		//assign arguments to variable according to flag
 		for(int i=0; i < args.length; i+=2)
 		{
 			if(args[i].compareToIgnoreCase("-d") == 0)
@@ -23,6 +24,7 @@ public class Demo
 				throw new Exception("Argument flag is not recognized");
 		}
 	
+		//instantiate a Diffusion object with passed dimensions and temperatures
 		Diffusion diff = new Diffusion(dim, left, right, top, bottom);
 		diff.printTable();
 	}

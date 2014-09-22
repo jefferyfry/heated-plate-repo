@@ -14,7 +14,7 @@ public class Tpdohp4ui implements HeatedPlate {
 	private int iteration=0;
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#initialize(int, double, double, double, double)
+	 * @see Gallhp.HeatedPlate#initialize(int, double, double, double, double)
 	 */
 	@Override
 	public void initialize(int dimension, int left, int right,
@@ -74,7 +74,7 @@ public class Tpdohp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#nextResults()
+	 * @see Gallhp.HeatedPlate#nextResults()
 	 */
 	@Override
 	public double[][] nextResults() {
@@ -104,7 +104,7 @@ public class Tpdohp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#hasNext()
+	 * @see Gallhp.HeatedPlate#hasNext()
 	 */
 	@Override
 	public boolean hasNext() {
@@ -112,7 +112,7 @@ public class Tpdohp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#getFinalResults()
+	 * @see Gallhp.HeatedPlate#getFinalResults()
 	 */
 	@Override
 	public double[][] getFinalResults() {
@@ -172,7 +172,7 @@ public class Tpdohp4ui implements HeatedPlate {
 	}
 
 	/* (non-Javadoc)
-	 * @see Gallhp.algo.HeatedPlate#getIterations()
+	 * @see Gallhp.HeatedPlate#getIterations()
 	 */
 	@Override
 	public int getIterations() {
@@ -196,7 +196,7 @@ public class Tpdohp4ui implements HeatedPlate {
 				travNewPlate = travNewPlate.right;
 				travOldPlate = travOldPlate.right;
 				
-				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) > 0.0001)
+				if(Math.abs(travNewPlate.temperature - travOldPlate.temperature) >= 0.0001)
 					return false;
 			}
 		}	

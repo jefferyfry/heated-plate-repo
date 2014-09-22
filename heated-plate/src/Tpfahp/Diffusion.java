@@ -28,6 +28,8 @@ public class Diffusion
 	
 	public int getIteration() { return iteration; }
 	
+	//initialize plate with temperatures on appropriate edges
+	//inner plate is implicitly set to zero for all cells not on an edge
 	public void initialize(float[][] plate)
 	{
 		for(int i=1; i <= dim; i++)
@@ -40,6 +42,7 @@ public class Diffusion
 		}
 	}
 	
+	//simulation of heat diffusion on plate
 	public void diffuse()
 	{
 		iteration = 0;
@@ -55,6 +58,8 @@ public class Diffusion
 		}while(! done() && ++iteration < Math.max(10000, dim * 100));
 	}
 	
+	//return true if all the cells have a change less than 0.0001
+	//return false otherwise
 	private boolean done()
 	{
 		for(int i=1; i <= dim; i++)
@@ -65,6 +70,7 @@ public class Diffusion
 		return true;
 	}
 	
+	//swap old and new plate 
 	private void swap()
 	{
 		float[][] temp;
@@ -74,6 +80,7 @@ public class Diffusion
 		newPlate = temp;
 	}
 	
+	//print table with 2 decimal precision
 	public void printTable()
 	{
 		for(int i=1; i <= dim; i++)
